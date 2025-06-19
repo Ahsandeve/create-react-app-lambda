@@ -15,56 +15,9 @@ import { DomainProvider } from "@/context/DomainContext";
 // const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: {
-    default: "Advanced Image Converter - Fast, Secure, Privacy-First Image Processing",
-    template: "%s | Advanced Image Converter"
-  },
-  description: "Convert images between formats instantly with our privacy-first image converter. Support for JPG, PNG, WebP, AVIF, GIF, and more. No uploads required - everything processes locally in your browser.",
-  keywords: "image converter, convert images online, JPG to PNG, WebP converter, AVIF converter, batch image processing, image optimization, privacy-first image tool",
-  authors: [{ name: "Advanced Image Converter Team" }],
-  creator: "Advanced Image Converter",
-  publisher: "Advanced Image Converter",
-  generator: "Next.js",
-  applicationName: "Advanced Image Converter",
-  referrer: "origin-when-cross-origin",
-  colorScheme: "light dark",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#3b82f6" },
-    { media: "(prefers-color-scheme: dark)", color: "#22c55e" },
-  ],
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-  },
-  openGraph: {
-    title: "Advanced Image Converter - Fast, Secure, Privacy-First Image Processing",
-    description: "Convert images between formats instantly with our privacy-first image converter. Support for JPG, PNG, WebP, AVIF, GIF, and more. No uploads required - everything processes locally in your browser.",
-    url: 'https://advancedimageconverter.com',
-    siteName: 'Advanced Image Converter',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Advanced Image Converter OG Image',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: "Advanced Image Converter - Fast, Secure, Privacy-First Image Processing",
-    description: "Convert images between formats instantly with our privacy-first image converter. Support for JPG, PNG, WebP, AVIF, GIF, and more. No uploads required - everything processes locally in your browser.",
-    images: ['/og-image.png'],
-    creator: '@AIC_Converter',
-  },
-  verification: {
-    google: 'google',
-    yandex: 'yandex',
-    yahoo: 'yahoo',
-    microsoft: 'microsoft'
-  }
+  title: "Advanced Image Converter",
+  description: "Convert images to any format with advanced options",
+  generator: "v0.dev",
 };
 
 export default function RootLayout({
