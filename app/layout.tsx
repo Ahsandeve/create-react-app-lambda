@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { DomainProvider } from "@/context/DomainContext"
+import { AuthProvider } from "@/components/auth-provider"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
@@ -169,14 +169,14 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <DomainProvider>
+          <AuthProvider>
             <div className="min-h-screen flex flex-col">
               <Header />
               <main className="flex-1">{children}</main>
               <Footer />
             </div>
             <ScrollToTop />
-          </DomainProvider>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
