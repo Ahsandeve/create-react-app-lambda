@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowLeft, Cpu, BarChart3, Zap, Settings } from "lucide-react"
+import { ArrowLeft, Download, Cpu, BarChart3, Zap, Settings } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 
 export const metadata: Metadata = {
@@ -44,7 +44,8 @@ export default function CompressionAlgorithmsGuide() {
               <span>21 min read</span>
             </div>
             <p className="text-xl text-gray-700 leading-relaxed">
-              Understand the science behind image compression algorithms. Learn how different formats achieve compression, their trade-offs, and how to optimize for your specific needs.
+              Understand the science behind image compression algorithms. Learn how different formats achieve
+              compression, their trade-offs, and how to optimize for your specific needs.
             </p>
           </header>
 
@@ -56,7 +57,8 @@ export default function CompressionAlgorithmsGuide() {
                   <div>
                     <h3 className="font-semibold text-lg mb-2">Why Compression Matters</h3>
                     <p className="text-gray-700">
-                      Image compression reduces file sizes while preserving visual quality, enabling faster web loading, reduced storage costs, and better user experiences across all devices.
+                      Image compression reduces file sizes while preserving visual quality, enabling faster web loading,
+                      reduced storage costs, and better user experiences across all devices.
                     </p>
                   </div>
                 </div>
@@ -67,7 +69,8 @@ export default function CompressionAlgorithmsGuide() {
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Lossless vs Lossy Compression</h3>
             <p>
-              Understanding the fundamental difference between lossless and lossy compression is crucial for choosing the right algorithm for your needs:
+              Understanding the fundamental difference between lossless and lossy compression is crucial for choosing
+              the right algorithm for your needs:
             </p>
 
             <div className="grid md:grid-cols-2 gap-6 my-8">
@@ -82,7 +85,9 @@ export default function CompressionAlgorithmsGuide() {
                     <li>⚠️ Larger file sizes</li>
                     <li>⚠️ Limited compression ratios</li>
                   </ul>
-                  <p className="text-xs mt-3 text-green-600"><strong>Examples:</strong> PNG, GIF, TIFF (uncompressed)</p>
+                  <p className="text-xs mt-3 text-green-600">
+                    <strong>Examples:</strong> PNG, GIF, TIFF (uncompressed)
+                  </p>
                 </CardContent>
               </Card>
 
@@ -97,15 +102,15 @@ export default function CompressionAlgorithmsGuide() {
                     <li>⚠️ Irreversible quality loss</li>
                     <li>⚠️ Artifacts at high compression</li>
                   </ul>
-                  <p className="text-xs mt-3 text-blue-600"><strong>Examples:</strong> JPEG, WebP (lossy), AVIF</p>
+                  <p className="text-xs mt-3 text-blue-600">
+                    <strong>Examples:</strong> JPEG, WebP (lossy), AVIF
+                  </p>
                 </CardContent>
               </Card>
             </div>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Compression Metrics</h3>
-            <p>
-              Several metrics help evaluate compression algorithm performance:
-            </p>
+            <p>Several metrics help evaluate compression algorithm performance:</p>
 
             <div className="overflow-x-auto my-6">
               <table className="min-w-full border-collapse border border-gray-300">
@@ -119,27 +124,35 @@ export default function CompressionAlgorithmsGuide() {
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2"><strong>Compression Ratio</strong></td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <strong>Compression Ratio</strong>
+                    </td>
                     <td className="border border-gray-300 px-4 py-2">Original size / Compressed size</td>
                     <td className="border border-gray-300 px-4 py-2">5:1 to 20:1</td>
                     <td className="border border-gray-300 px-4 py-2">Overall efficiency</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2"><strong>PSNR</strong></td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <strong>PSNR</strong>
+                    </td>
                     <td className="border border-gray-300 px-4 py-2">Peak Signal-to-Noise Ratio</td>
-                    <td className="border border-gray-300 px-4 py-2">{'>'}30 dB</td>
+                    <td className="border border-gray-300 px-4 py-2">{">"}30 dB</td>
                     <td className="border border-gray-300 px-4 py-2">Quality measurement</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2"><strong>SSIM</strong></td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <strong>SSIM</strong>
+                    </td>
                     <td className="border border-gray-300 px-4 py-2">Structural Similarity Index</td>
-                    <td className="border border-gray-300 px-4 py-2">{'>'}0.9</td>
+                    <td className="border border-gray-300 px-4 py-2">{">"}0.9</td>
                     <td className="border border-gray-300 px-4 py-2">Perceptual quality</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2"><strong>Encoding Time</strong></td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <strong>Encoding Time</strong>
+                    </td>
                     <td className="border border-gray-300 px-4 py-2">Time to compress image</td>
-                    <td className="border border-gray-300 px-4 py-2">{'<'}1 second</td>
+                    <td className="border border-gray-300 px-4 py-2">{"<"}1 second</td>
                     <td className="border border-gray-300 px-4 py-2">Real-time applications</td>
                   </tr>
                 </tbody>
@@ -155,7 +168,8 @@ export default function CompressionAlgorithmsGuide() {
                   <div>
                     <h3 className="font-semibold text-lg mb-2 text-orange-800">JPEG: The Web Standard</h3>
                     <p className="text-orange-700">
-                      JPEG remains the most widely used lossy compression format, optimized for photographic images with smooth color transitions and complex details.
+                      JPEG remains the most widely used lossy compression format, optimized for photographic images with
+                      smooth color transitions and complex details.
                     </p>
                   </div>
                 </div>
@@ -163,28 +177,36 @@ export default function CompressionAlgorithmsGuide() {
             </Card>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">JPEG Algorithm Steps</h3>
-            <p>
-              The JPEG compression algorithm follows a sophisticated multi-step process:
-            </p>
+            <p>The JPEG compression algorithm follows a sophisticated multi-step process:</p>
 
             <Card className="my-6 bg-gray-50">
               <CardContent className="p-6">
                 <h4 className="font-semibold mb-3">JPEG Compression Pipeline:</h4>
                 <ol className="list-decimal list-inside space-y-3">
-                  <li><strong>Color Space Conversion:</strong> RGB to YCbCr (separates luminance from chrominance)</li>
-                  <li><strong>Chroma Subsampling:</strong> Reduces color information (human eyes less sensitive to color)</li>
-                  <li><strong>Block Division:</strong> Splits image into 8x8 pixel blocks</li>
-                  <li><strong>DCT Transform:</strong> Converts spatial domain to frequency domain</li>
-                  <li><strong>Quantization:</strong> Reduces precision of high-frequency components</li>
-                  <li><strong>Entropy Encoding:</strong> Huffman coding for final compression</li>
+                  <li>
+                    <strong>Color Space Conversion:</strong> RGB to YCbCr (separates luminance from chrominance)
+                  </li>
+                  <li>
+                    <strong>Chroma Subsampling:</strong> Reduces color information (human eyes less sensitive to color)
+                  </li>
+                  <li>
+                    <strong>Block Division:</strong> Splits image into 8x8 pixel blocks
+                  </li>
+                  <li>
+                    <strong>DCT Transform:</strong> Converts spatial domain to frequency domain
+                  </li>
+                  <li>
+                    <strong>Quantization:</strong> Reduces precision of high-frequency components
+                  </li>
+                  <li>
+                    <strong>Entropy Encoding:</strong> Huffman coding for final compression
+                  </li>
                 </ol>
               </CardContent>
             </Card>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">JPEG Quality Settings</h3>
-            <p>
-              Understanding JPEG quality settings helps optimize the size-quality trade-off:
-            </p>
+            <p>Understanding JPEG quality settings helps optimize the size-quality trade-off:</p>
 
             <div className="grid md:grid-cols-3 gap-4 my-6">
               <Card>
@@ -226,25 +248,32 @@ export default function CompressionAlgorithmsGuide() {
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">PNG Algorithm Overview</h3>
             <p>
-              PNG uses lossless compression based on the DEFLATE algorithm, making it ideal for images with sharp edges, text, and transparency:
+              PNG uses lossless compression based on the DEFLATE algorithm, making it ideal for images with sharp edges,
+              text, and transparency:
             </p>
 
             <Card className="my-6 bg-gray-50">
               <CardContent className="p-6">
                 <h4 className="font-semibold mb-3">PNG Compression Process:</h4>
                 <ol className="list-decimal list-inside space-y-2">
-                  <li><strong>Filtering:</strong> Applies prediction filters to reduce redundancy</li>
-                  <li><strong>DEFLATE Compression:</strong> LZ77 + Huffman coding</li>
-                  <li><strong>Chunk Organization:</strong> Organizes data into manageable chunks</li>
-                  <li><strong>CRC Checking:</strong> Ensures data integrity</li>
+                  <li>
+                    <strong>Filtering:</strong> Applies prediction filters to reduce redundancy
+                  </li>
+                  <li>
+                    <strong>DEFLATE Compression:</strong> LZ77 + Huffman coding
+                  </li>
+                  <li>
+                    <strong>Chunk Organization:</strong> Organizes data into manageable chunks
+                  </li>
+                  <li>
+                    <strong>CRC Checking:</strong> Ensures data integrity
+                  </li>
                 </ol>
               </CardContent>
             </Card>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">PNG Filter Types</h3>
-            <p>
-              PNG uses five different filter types to optimize compression for different image characteristics:
-            </p>
+            <p>PNG uses five different filter types to optimize compression for different image characteristics:</p>
 
             <div className="overflow-x-auto my-6">
               <table className="min-w-full border-collapse border border-gray-300">
@@ -288,9 +317,7 @@ export default function CompressionAlgorithmsGuide() {
             <h2 className="text-3xl font-bold mt-12 mb-6">WebP: Modern Compression</h2>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">WebP Dual Approach</h3>
-            <p>
-              WebP uniquely supports both lossy and lossless compression modes, adapting to different image types:
-            </p>
+            <p>WebP uniquely supports both lossy and lossless compression modes, adapting to different image types:</p>
 
             <div className="grid md:grid-cols-2 gap-6 my-8">
               <Card>
@@ -321,19 +348,27 @@ export default function CompressionAlgorithmsGuide() {
             </div>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">WebP Advanced Features</h3>
-            <p>
-              WebP includes several advanced features that improve compression efficiency:
-            </p>
+            <p>WebP includes several advanced features that improve compression efficiency:</p>
 
             <Card className="my-6 bg-blue-50 border-blue-200">
               <CardContent className="p-6">
                 <h4 className="font-semibold mb-3">WebP Innovations:</h4>
                 <ul className="space-y-2">
-                  <li>• <strong>Adaptive Block Sizes:</strong> Variable block sizes for optimal compression</li>
-                  <li>• <strong>Intra-prediction:</strong> Better prediction of pixel values</li>
-                  <li>• <strong>Entropy Coding:</strong> Arithmetic coding for better compression</li>
-                  <li>• <strong>Loop Filtering:</strong> Reduces blocking artifacts</li>
-                  <li>• <strong>Animation Support:</strong> Efficient animated image compression</li>
+                  <li>
+                    • <strong>Adaptive Block Sizes:</strong> Variable block sizes for optimal compression
+                  </li>
+                  <li>
+                    • <strong>Intra-prediction:</strong> Better prediction of pixel values
+                  </li>
+                  <li>
+                    • <strong>Entropy Coding:</strong> Arithmetic coding for better compression
+                  </li>
+                  <li>
+                    • <strong>Loop Filtering:</strong> Reduces blocking artifacts
+                  </li>
+                  <li>
+                    • <strong>Animation Support:</strong> Efficient animated image compression
+                  </li>
                 </ul>
               </CardContent>
             </Card>
@@ -347,7 +382,8 @@ export default function CompressionAlgorithmsGuide() {
                   <div>
                     <h3 className="font-semibold text-lg mb-2 text-purple-800">AVIF: The Future</h3>
                     <p className="text-purple-700">
-                      AVIF, based on the AV1 video codec, represents the cutting edge of image compression, offering superior compression ratios while maintaining excellent quality.
+                      AVIF, based on the AV1 video codec, represents the cutting edge of image compression, offering
+                      superior compression ratios while maintaining excellent quality.
                     </p>
                   </div>
                 </div>
@@ -355,9 +391,7 @@ export default function CompressionAlgorithmsGuide() {
             </Card>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">AVIF Technical Advantages</h3>
-            <p>
-              AVIF leverages advanced video compression techniques for still images:
-            </p>
+            <p>AVIF leverages advanced video compression techniques for still images:</p>
 
             <div className="grid md:grid-cols-2 gap-6 my-8">
               <Card>
@@ -388,19 +422,27 @@ export default function CompressionAlgorithmsGuide() {
             </div>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">AVIF Encoding Parameters</h3>
-            <p>
-              AVIF offers extensive encoding parameters for fine-tuning compression:
-            </p>
+            <p>AVIF offers extensive encoding parameters for fine-tuning compression:</p>
 
             <Card className="my-6 bg-gray-50">
               <CardContent className="p-6">
                 <h4 className="font-semibold mb-3">Key AVIF Settings:</h4>
                 <ul className="space-y-3">
-                  <li><strong>CRF (Constant Rate Factor):</strong> 0-63, lower values = higher quality</li>
-                  <li><strong>Speed Settings:</strong> 0-10, higher values = faster encoding</li>
-                  <li><strong>Tile Configuration:</strong> Parallel processing optimization</li>
-                  <li><strong>Color Subsampling:</strong> 4:4:4, 4:2:2, or 4:2:0</li>
-                  <li><strong>Bit Depth:</strong> 8-bit, 10-bit, or 12-bit</li>
+                  <li>
+                    <strong>CRF (Constant Rate Factor):</strong> 0-63, lower values = higher quality
+                  </li>
+                  <li>
+                    <strong>Speed Settings:</strong> 0-10, higher values = faster encoding
+                  </li>
+                  <li>
+                    <strong>Tile Configuration:</strong> Parallel processing optimization
+                  </li>
+                  <li>
+                    <strong>Color Subsampling:</strong> 4:4:4, 4:2:2, or 4:2:0
+                  </li>
+                  <li>
+                    <strong>Bit Depth:</strong> 8-bit, 10-bit, or 12-bit
+                  </li>
                 </ul>
               </CardContent>
             </Card>
@@ -408,9 +450,7 @@ export default function CompressionAlgorithmsGuide() {
             <h2 className="text-3xl font-bold mt-12 mb-6">Algorithm Comparison</h2>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Performance Benchmarks</h3>
-            <p>
-              Real-world performance comparison across different image types:
-            </p>
+            <p>Real-world performance comparison across different image types:</p>
 
             <div className="overflow-x-auto my-6">
               <table className="min-w-full border-collapse border border-gray-300">
@@ -425,28 +465,36 @@ export default function CompressionAlgorithmsGuide() {
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2"><strong>JPEG</strong></td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <strong>JPEG</strong>
+                    </td>
                     <td className="border border-gray-300 px-4 py-2">Excellent</td>
                     <td className="border border-gray-300 px-4 py-2">Poor</td>
                     <td className="border border-gray-300 px-4 py-2">Poor</td>
                     <td className="border border-gray-300 px-4 py-2">No</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2"><strong>PNG</strong></td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <strong>PNG</strong>
+                    </td>
                     <td className="border border-gray-300 px-4 py-2">Poor</td>
                     <td className="border border-gray-300 px-4 py-2">Excellent</td>
                     <td className="border border-gray-300 px-4 py-2">Excellent</td>
                     <td className="border border-gray-300 px-4 py-2">Yes</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2"><strong>WebP</strong></td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <strong>WebP</strong>
+                    </td>
                     <td className="border border-gray-300 px-4 py-2">Very Good</td>
                     <td className="border border-gray-300 px-4 py-2">Good</td>
                     <td className="border border-gray-300 px-4 py-2">Good</td>
                     <td className="border border-gray-300 px-4 py-2">Yes</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2"><strong>AVIF</strong></td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <strong>AVIF</strong>
+                    </td>
                     <td className="border border-gray-300 px-4 py-2">Excellent</td>
                     <td className="border border-gray-300 px-4 py-2">Very Good</td>
                     <td className="border border-gray-300 px-4 py-2">Very Good</td>
@@ -465,7 +513,8 @@ export default function CompressionAlgorithmsGuide() {
                   <div>
                     <h3 className="font-semibold text-lg mb-2 text-green-800">Practical Optimization</h3>
                     <p className="text-green-700">
-                      Understanding algorithm internals helps you choose optimal settings for your specific use case, balancing file size, quality, and encoding time.
+                      Understanding algorithm internals helps you choose optimal settings for your specific use case,
+                      balancing file size, quality, and encoding time.
                     </p>
                   </div>
                 </div>
@@ -473,9 +522,7 @@ export default function CompressionAlgorithmsGuide() {
             </Card>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Content-Aware Optimization</h3>
-            <p>
-              Different image types benefit from different optimization approaches:
-            </p>
+            <p>Different image types benefit from different optimization approaches:</p>
 
             <div className="grid md:grid-cols-3 gap-4 my-6">
               <Card>
@@ -515,4 +562,106 @@ export default function CompressionAlgorithmsGuide() {
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Advanced Optimization Techniques</h3>
 
-            \
+            <Card className="my-6 bg-gray-50">
+              <CardContent className="p-6">
+                <h4 className="font-semibold mb-3">Professional Optimization Methods:</h4>
+                <ul className="space-y-3">
+                  <li>
+                    <strong>Perceptual Optimization:</strong> Use SSIM-based quality metrics instead of PSNR
+                  </li>
+                  <li>
+                    <strong>Adaptive Quality:</strong> Vary quality based on image complexity and importance
+                  </li>
+                  <li>
+                    <strong>Multi-format Serving:</strong> Serve AVIF to supporting browsers, WebP as fallback
+                  </li>
+                  <li>
+                    <strong>Preprocessing:</strong> Noise reduction and sharpening before compression
+                  </li>
+                  <li>
+                    <strong>Psychovisual Tuning:</strong> Optimize for human visual perception
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <div className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white p-8 rounded-lg my-12">
+              <div className="text-center">
+                <h2 className="text-2xl font-bold mb-4">Optimize Your Images with Advanced Algorithms</h2>
+                <p className="mb-6">
+                  Apply cutting-edge compression algorithms and optimization techniques with our advanced image
+                  processing tools.
+                </p>
+                <Link
+                  href="/"
+                  className="inline-flex items-center bg-white text-cyan-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  <Download className="w-5 h-5 mr-2" />
+                  Start Optimizing
+                </Link>
+              </div>
+            </div>
+
+            <h2 className="text-3xl font-bold mt-12 mb-6">Frequently Asked Questions</h2>
+
+            <div className="space-y-6">
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-lg mb-2">
+                    Which compression algorithm should I use for my website?
+                  </h3>
+                  <p className="text-gray-700">
+                    For modern websites, use AVIF with WebP fallback for photographs, and WebP lossless or PNG for
+                    graphics. This provides the best compression while maintaining broad browser support.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-lg mb-2">Why does JPEG create blocky artifacts?</h3>
+                  <p className="text-gray-700">
+                    JPEG divides images into 8x8 pixel blocks for processing. At high compression levels, the
+                    quantization step removes too much information, making these block boundaries visible as artifacts.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-lg mb-2">How does WebP achieve better compression than JPEG?</h3>
+                  <p className="text-gray-700">
+                    WebP uses more advanced prediction methods, variable block sizes, and better entropy coding. It also
+                    benefits from being designed specifically for web use, unlike JPEG which was created in the 1990s.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-lg mb-2">Is AVIF worth the longer encoding times?</h3>
+                  <p className="text-gray-700">
+                    For high-traffic websites, yes. The bandwidth savings from AVIF's superior compression often
+                    outweigh the one-time encoding cost. Consider using faster encoding presets for real-time
+                    applications.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-lg mb-2">Can I convert between formats without quality loss?</h3>
+                  <p className="text-gray-700">
+                    Converting from lossless to lossless (PNG to WebP lossless) preserves quality. Converting from lossy
+                    to any format, or lossless to lossy, will result in quality changes. Always keep original
+                    uncompressed files when possible.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  )
+}
