@@ -25,7 +25,7 @@ All functions (inside `src/lambda`) are compiled with webpack using Babel, so yo
 
 ## Local Development
 
-```bash
+\`\`\`bash
 ## prep steps for first time users
 npm i -g netlify-cli # Make sure you have the [Netlify CLI](https://github.com/netlify/cli) installed
 git clone https://github.com/netlify/create-react-app-lambda ## clone this repo
@@ -34,7 +34,7 @@ yarn # install all dependencies
 
 ## done every time you start up this project
 ntl dev ## nice shortcut for `netlify dev`, starts up create-react-app AND a local Node.js server for your Netlify functions
-```
+\`\`\`
 
 This fires up [Netlify Dev](https://www.netlify.com/docs/cli/?utm_source=github&utm_medium=swyx-CRAL&utm_campaign=devex#netlify-dev-beta), which:
 
@@ -67,7 +67,7 @@ You can use Typescript in both your frontend React code (with `react-scripts` v2
 2. convert `src/lambda/hello.js` to `src/lambda/hello.ts`
 3. use types in your event handler:
 
-```ts
+\`\`\`ts
 import { Handler, Context, Callback, APIGatewayEvent } from 'aws-lambda'
 
 interface HelloResponse {
@@ -89,7 +89,7 @@ const handler: Handler = (event: APIGatewayEvent, context: Context, callback: Ca
 }
 
 export { handler }
-```
+\`\`\`
 
 rerun and see it work!
 
