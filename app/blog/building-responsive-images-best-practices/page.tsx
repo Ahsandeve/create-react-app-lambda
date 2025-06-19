@@ -135,7 +135,7 @@ export default function ResponsiveImagesPage() {
                   <li>• Images account for 50-60% of average page weight</li>
                   <li>• Responsive images can reduce image bytes by 40-80%</li>
                   <li>• 1-second delay in loading can reduce conversions by 7%</li>
-                  <li>• 53% of mobile users abandon sites that take >3 seconds to load</li>
+                  <li>• 53% of mobile users abandon sites that take &gt;3 seconds to load</li>
                 </ul>
               </div>
 
@@ -157,7 +157,7 @@ export default function ResponsiveImagesPage() {
      sizes="(max-width: 600px) 400px,
             (max-width: 1000px) 800px,
             1200px"
-     alt="Responsive image example">`}
+     alt="Responsive image example" />`}
                 </pre>
               </div>
 
