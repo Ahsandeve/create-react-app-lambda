@@ -1,559 +1,724 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Calendar, Clock, Tag, ArrowLeft, BookOpen } from "lucide-react"
+import { ArrowLeft, Download, Smartphone, Camera, Zap, ImageIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 
 export const metadata: Metadata = {
-  title: "Mobile Photography: Converting RAW to Web-Ready Images | Advanced Image Converter",
+  title: "Mobile Photography: From RAW to Web-Ready Images | Complete Guide 2024",
   description:
-    "Complete guide to processing RAW mobile photos and optimizing them for web use without losing quality. Learn mobile RAW processing workflows and techniques.",
+    "Master mobile photography workflows. Learn how to process RAW photos from smartphones, optimize for web delivery, and create stunning images on mobile devices.",
   keywords:
-    "mobile photography, RAW processing, mobile RAW, smartphone photography, photo optimization, mobile photo editing, RAW to JPEG",
+    "mobile photography, smartphone RAW, mobile photo editing, RAW processing, mobile workflow, smartphone photography, photo optimization, mobile image editing",
   openGraph: {
-    title: "Mobile Photography: Converting RAW to Web-Ready Images",
-    description: "Master mobile RAW processing and web optimization techniques",
+    title: "Mobile Photography: From RAW to Web-Ready Images | Complete Guide 2024",
+    description:
+      "Master mobile photography workflows. Learn how to process RAW photos from smartphones, optimize for web delivery, and create stunning images on mobile devices.",
     type: "article",
+    publishedTime: "2024-01-25T10:00:00.000Z",
+    authors: ["Advanced Image Converter Team"],
   },
 }
 
-const faqs = [
-  {
-    question: "What is mobile RAW photography?",
-    answer:
-      "Mobile RAW photography captures unprocessed image data from your smartphone's camera sensor, providing greater flexibility for editing compared to standard JPEG photos. Modern smartphones like iPhone Pro models and flagship Android devices support RAW capture.",
-  },
-  {
-    question: "Why should I shoot RAW on mobile?",
-    answer:
-      "RAW files contain more image data, allowing for better exposure correction, color grading, and detail recovery. You can fix overexposed highlights, lift shadows, and achieve professional-looking results that aren't possible with JPEG files.",
-  },
-  {
-    question: "How much larger are mobile RAW files?",
-    answer:
-      "Mobile RAW files are typically 10-25MB compared to 2-5MB for JPEG. While larger, they provide significantly more editing flexibility and image quality, especially for important photos.",
-  },
-  {
-    question: "Can I edit RAW files directly on my phone?",
-    answer:
-      "Yes! Apps like Lightroom Mobile, VSCO, Snapseed, and RNI Films can edit RAW files directly on your smartphone. However, desktop software often provides more advanced tools and better performance.",
-  },
-  {
-    question: "What's the best format for sharing mobile photos online?",
-    answer:
-      "For web sharing, convert RAW files to JPEG (for photos) or WebP (for better compression). Use 85-95% quality for social media and 75-85% for web galleries to balance quality and file size.",
-  },
-]
-
-export default function MobilePhotographyPage() {
+export default function MobilePhotographyGuide() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Navigation */}
-      <div className="border-b border-gray-200 dark:border-gray-700">
-        <div className="container mx-auto px-4 py-4">
-          <Link href="/blog" className="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Blog
-          </Link>
-        </div>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
+      <div className="container mx-auto px-4 py-8">
+        {/* Back Button */}
+        <Link href="/blog" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6">
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back to Blog
+        </Link>
 
-      {/* Article */}
-      <article className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            {/* Meta Info */}
-            <div className="flex flex-wrap items-center gap-4 mb-6">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-400">
-                <Tag className="h-3 w-3 mr-1" />
-                photography
-              </span>
-              <span className="text-sm text-gray-500 flex items-center">
-                <Clock className="h-4 w-4 mr-1" />9 min read
-              </span>
-              <span className="text-sm text-gray-500 flex items-center">
-                <Calendar className="h-4 w-4 mr-1" />
-                January 5, 2024
-              </span>
+        {/* Article Header */}
+        <article className="max-w-4xl mx-auto">
+          <header className="mb-8">
+            <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+              <span>January 25, 2024</span>
+              <span>•</span>
+              <span>18 min read</span>
+              <span>•</span>
+              <span>By Advanced Image Converter Team</span>
             </div>
-
-            {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-              Mobile Photography: Converting RAW to Web-Ready Images
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              Mobile Photography: From RAW to Web-Ready Images
             </h1>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Unlock the full potential of smartphone photography. Learn professional workflows for processing RAW
+              images, optimizing for web delivery, and creating stunning visuals entirely on mobile devices.
+            </p>
+          </header>
 
-            {/* Author */}
-            <div className="flex items-center mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
-              <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                LW
-              </div>
-              <div>
-                <p className="font-medium text-gray-900 dark:text-white">Lisa Wang</p>
-                <p className="text-sm text-gray-500">Mobile Photography Specialist</p>
+          {/* Featured Image */}
+          <div className="mb-8">
+            <img
+              src="/placeholder.svg?height=400&width=800"
+              alt="Mobile photography workflow from RAW to web-ready"
+              className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
+            />
+          </div>
+
+          {/* Article Content */}
+          <div className="prose prose-lg max-w-none">
+            <h2>The Mobile Photography Revolution</h2>
+            <p>
+              Mobile photography has evolved from simple snapshots to professional-quality imaging. Modern smartphones
+              capture RAW files with incredible detail, offering photographers unprecedented creative control. However,
+              the journey from RAW capture to web-ready images requires understanding, skill, and the right workflow.
+            </p>
+
+            <div className="bg-purple-50 border-l-4 border-purple-500 p-6 my-8">
+              <div className="flex items-start">
+                <Smartphone className="w-6 h-6 text-purple-500 mr-3 mt-1" />
+                <div>
+                  <h3 className="text-lg font-semibold text-purple-900 mb-2">Mobile Photography Stats</h3>
+                  <p className="text-purple-800">
+                    Over 90% of photos are now taken on smartphones, and modern devices can capture 12-bit RAW files
+                    with dynamic range comparable to entry-level DSLRs.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Content */}
-            <div className="prose prose-lg dark:prose-invert max-w-none">
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Mobile photography has evolved dramatically, with modern smartphones capable of capturing RAW images
-                that rival traditional cameras. However, RAW files require processing to unlock their full potential.
-                This comprehensive guide will teach you how to transform your mobile RAW captures into stunning,
-                web-ready images.
-              </p>
+            <h2>Understanding Mobile RAW Photography</h2>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6">Understanding Mobile RAW Photography</h2>
+            <h3>What is Mobile RAW?</h3>
+            <p>
+              Mobile RAW files contain unprocessed sensor data from your smartphone's camera. Unlike JPEG files, which
+              are processed and compressed in-camera, RAW files preserve all the original image information, giving you
+              maximum flexibility in post-processing.
+            </p>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4">What is Mobile RAW?</h3>
-              <p>
-                Mobile RAW files contain unprocessed data directly from your smartphone's camera sensor. Unlike JPEG
-                files, which are processed and compressed in-camera, RAW files preserve all the original image
-                information, giving you maximum flexibility in post-processing.
-              </p>
+            <h3>Benefits of Shooting RAW on Mobile</h3>
+            <ul>
+              <li>
+                <strong>Greater Dynamic Range:</strong> Recover details in highlights and shadows
+              </li>
+              <li>
+                <strong>Better Color Grading:</strong> More accurate and flexible color adjustments
+              </li>
+              <li>
+                <strong>Non-Destructive Editing:</strong> Make changes without degrading image quality
+              </li>
+              <li>
+                <strong>Professional Control:</strong> Fine-tune exposure, white balance, and more
+              </li>
+              <li>
+                <strong>Future-Proofing:</strong> Re-edit images as software improves
+              </li>
+            </ul>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Mobile RAW vs JPEG Comparison</h3>
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 my-8">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-gray-200 dark:border-gray-700">
-                        <th className="text-left py-3 font-semibold">Aspect</th>
-                        <th className="text-left py-3 font-semibold">Mobile RAW</th>
-                        <th className="text-left py-3 font-semibold">JPEG</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-b border-gray-100 dark:border-gray-700">
-                        <td className="py-3 font-medium">File Size</td>
-                        <td className="py-3">10-25MB</td>
-                        <td className="py-3">2-5MB</td>
-                      </tr>
-                      <tr className="border-b border-gray-100 dark:border-gray-700">
-                        <td className="py-3 font-medium">Editing Flexibility</td>
-                        <td className="py-3">Excellent</td>
-                        <td className="py-3">Limited</td>
-                      </tr>
-                      <tr className="border-b border-gray-100 dark:border-gray-700">
-                        <td className="py-3 font-medium">Dynamic Range</td>
-                        <td className="py-3">12-14 stops</td>
-                        <td className="py-3">8-10 stops</td>
-                      </tr>
-                      <tr className="border-b border-gray-100 dark:border-gray-700">
-                        <td className="py-3 font-medium">Color Depth</td>
-                        <td className="py-3">12-16 bit</td>
-                        <td className="py-3">8 bit</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 font-medium">Ready to Share</td>
-                        <td className="py-3">Requires processing</td>
-                        <td className="py-3">Immediate</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <h2 className="text-3xl font-bold mt-12 mb-6">Enabling RAW Capture on Mobile Devices</h2>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">iPhone (Pro Models)</h3>
-              <ol>
-                <li>Open Settings → Camera</li>
-                <li>Tap "Formats"</li>
-                <li>Select "Apple ProRAW" under Photo Capture</li>
-                <li>Choose 12MP or 48MP (iPhone 14 Pro and later)</li>
-                <li>In Camera app, tap RAW button to enable for each shot</li>
-              </ol>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Android Devices</h3>
-              <p>RAW support varies by manufacturer:</p>
-              <ul>
-                <li>
-                  <strong>Samsung Galaxy:</strong> Camera → Settings → Save options → RAW copies
-                </li>
-                <li>
-                  <strong>Google Pixel:</strong> Use third-party apps like Camera FV-5 or Open Camera
-                </li>
-                <li>
-                  <strong>OnePlus:</strong> Pro mode → RAW format
-                </li>
-                <li>
-                  <strong>Huawei:</strong> Pro mode → RAW format toggle
-                </li>
-              </ul>
-
-              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 my-8">
-                <h4 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-2">
-                  📱 Pro Tip: Third-Party Camera Apps
-                </h4>
-                <p className="text-blue-800 dark:text-blue-200">
-                  If your phone doesn't have built-in RAW support, try apps like Adobe Lightroom Camera, VSCO, or Camera
-                  FV-5 which can capture RAW files on compatible devices.
-                </p>
-              </div>
-
-              <h2 className="text-3xl font-bold mt-12 mb-6">Mobile RAW Processing Workflow</h2>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Step 1: Import and Organize</h3>
-              <ul>
-                <li>
-                  <strong>Transfer files:</strong> Use cloud storage, cable, or AirDrop
-                </li>
-                <li>
-                  <strong>Create folders:</strong> Organize by date, event, or project
-                </li>
-                <li>
-                  <strong>Backup originals:</strong> Always keep copies of RAW files
-                </li>
-                <li>
-                  <strong>Cull images:</strong> Remove obviously bad shots to save time
-                </li>
-              </ul>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Step 2: Basic Adjustments</h3>
-              <p>Start with these fundamental corrections:</p>
-
-              <div className="grid md:grid-cols-2 gap-6 my-6">
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6">
-                  <h5 className="font-semibold mb-3">Exposure & Tone</h5>
+            <h3>Mobile RAW Formats</h3>
+            <div className="grid md:grid-cols-2 gap-6 my-8">
+              <Card>
+                <CardContent className="p-6">
+                  <Camera className="w-8 h-8 text-blue-600 mb-4" />
+                  <h4 className="font-semibold mb-2">DNG (Digital Negative)</h4>
                   <ul className="text-sm space-y-1">
-                    <li>• Correct overall exposure</li>
-                    <li>• Recover highlights</li>
-                    <li>• Lift shadows</li>
-                    <li>• Adjust contrast</li>
-                    <li>• Set white and black points</li>
+                    <li>• Adobe's open standard</li>
+                    <li>• Widely supported</li>
+                    <li>• Used by most Android phones</li>
+                    <li>• Compatible with desktop software</li>
                   </ul>
-                </div>
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6">
-                  <h5 className="font-semibold mb-3">Color & White Balance</h5>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-6">
+                  <ImageIcon className="w-8 h-8 text-gray-600 mb-4" />
+                  <h4 className="font-semibold mb-2">Proprietary Formats</h4>
                   <ul className="text-sm space-y-1">
-                    <li>• Correct white balance</li>
-                    <li>• Adjust vibrance</li>
-                    <li>• Fine-tune saturation</li>
-                    <li>• Color temperature tweaks</li>
-                    <li>• Tint corrections</li>
+                    <li>• Apple ProRAW (.HEIF)</li>
+                    <li>• Samsung .SRW files</li>
+                    <li>• Huawei .HWI files</li>
+                    <li>• May require specific software</li>
                   </ul>
-                </div>
-              </div>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Step 3: Detail Enhancement</h3>
-              <ul>
-                <li>
-                  <strong>Sharpening:</strong> Apply appropriate sharpening for output size
-                </li>
-                <li>
-                  <strong>Noise reduction:</strong> Reduce noise while preserving detail
-                </li>
-                <li>
-                  <strong>Clarity/Texture:</strong> Enhance mid-tone contrast
-                </li>
-                <li>
-                  <strong>Dehaze:</strong> Cut through atmospheric haze
-                </li>
-              </ul>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Step 4: Creative Adjustments</h3>
-              <ul>
-                <li>
-                  <strong>HSL adjustments:</strong> Fine-tune individual colors
-                </li>
-                <li>
-                  <strong>Tone curves:</strong> Create custom contrast curves
-                </li>
-                <li>
-                  <strong>Split toning:</strong> Add color to highlights and shadows
-                </li>
-                <li>
-                  <strong>Vignetting:</strong> Subtle darkening of edges
-                </li>
-              </ul>
-
-              <h2 className="text-3xl font-bold mt-12 mb-6">Best Mobile RAW Processing Apps</h2>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Adobe Lightroom Mobile</h3>
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 my-6">
-                <p className="mb-3">
-                  <strong>Pros:</strong>
-                </p>
-                <ul className="text-sm space-y-1 mb-4">
-                  <li>• Professional-grade tools</li>
-                  <li>• Cloud sync with desktop</li>
-                  <li>• Presets and profiles</li>
-                  <li>• RAW capture built-in</li>
-                </ul>
-                <p className="mb-3">
-                  <strong>Cons:</strong>
-                </p>
-                <ul className="text-sm space-y-1">
-                  <li>• Subscription required for full features</li>
-                  <li>• Can be overwhelming for beginners</li>
-                </ul>
-              </div>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">VSCO</h3>
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 my-6">
-                <p className="mb-3">
-                  <strong>Pros:</strong>
-                </p>
-                <ul className="text-sm space-y-1 mb-4">
-                  <li>• Beautiful film-inspired presets</li>
-                  <li>• Intuitive interface</li>
-                  <li>• Strong community features</li>
-                  <li>• Good for creative looks</li>
-                </ul>
-                <p className="mb-3">
-                  <strong>Cons:</strong>
-                </p>
-                <ul className="text-sm space-y-1">
-                  <li>• Limited advanced controls</li>
-                  <li>• Premium features require subscription</li>
-                </ul>
-              </div>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Snapseed (Free)</h3>
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 my-6">
-                <p className="mb-3">
-                  <strong>Pros:</strong>
-                </p>
-                <ul className="text-sm space-y-1 mb-4">
-                  <li>• Completely free</li>
-                  <li>• Powerful editing tools</li>
-                  <li>• RAW support</li>
-                  <li>• No subscription required</li>
-                </ul>
-                <p className="mb-3">
-                  <strong>Cons:</strong>
-                </p>
-                <ul className="text-sm space-y-1">
-                  <li>• Less intuitive interface</li>
-                  <li>• No cloud sync</li>
-                </ul>
-              </div>
-
-              <h2 className="text-3xl font-bold mt-12 mb-6">Optimizing for Web Delivery</h2>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Export Settings for Different Platforms</h3>
-
-              <div className="grid md:grid-cols-2 gap-6 my-8">
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6">
-                  <h5 className="font-semibold mb-3">Instagram</h5>
-                  <ul className="text-sm space-y-1">
-                    <li>• Format: JPEG</li>
-                    <li>• Size: 1080×1080 (square) or 1080×1350 (portrait)</li>
-                    <li>• Quality: 85-95%</li>
-                    <li>• Color space: sRGB</li>
-                    <li>• Sharpening: Standard</li>
-                  </ul>
-                </div>
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6">
-                  <h5 className="font-semibold mb-3">Facebook</h5>
-                  <ul className="text-sm space-y-1">
-                    <li>• Format: JPEG</li>
-                    <li>• Size: 2048×2048 max</li>
-                    <li>• Quality: 80-90%</li>
-                    <li>• Color space: sRGB</li>
-                    <li>• Sharpening: Low</li>
-                  </ul>
-                </div>
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6">
-                  <h5 className="font-semibold mb-3">Website/Portfolio</h5>
-                  <ul className="text-sm space-y-1">
-                    <li>• Format: JPEG or WebP</li>
-                    <li>• Size: 1920×1280 max</li>
-                    <li>• Quality: 85-95%</li>
-                    <li>• Color space: sRGB</li>
-                    <li>• Sharpening: Standard</li>
-                  </ul>
-                </div>
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6">
-                  <h5 className="font-semibold mb-3">Email/Sharing</h5>
-                  <ul className="text-sm space-y-1">
-                    <li>• Format: JPEG</li>
-                    <li>• Size: 1200×800 max</li>
-                    <li>• Quality: 75-85%</li>
-                    <li>• Color space: sRGB</li>
-                    <li>• File size: Under 1MB</li>
-                  </ul>
-                </div>
-              </div>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Advanced Web Optimization</h3>
-              <ul>
-                <li>
-                  <strong>Progressive JPEG:</strong> Enables faster perceived loading
-                </li>
-                <li>
-                  <strong>WebP format:</strong> 25-35% smaller than JPEG with similar quality
-                </li>
-                <li>
-                  <strong>Responsive images:</strong> Multiple sizes for different devices
-                </li>
-                <li>
-                  <strong>Metadata stripping:</strong> Remove EXIF data to reduce file size
-                </li>
-                <li>
-                  <strong>Color profile embedding:</strong> Include sRGB for consistent colors
-                </li>
-              </ul>
-
-              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-6 my-8">
-                <h4 className="text-lg font-semibold text-green-900 dark:text-green-100 mb-2">🚀 Pro Workflow Tip</h4>
-                <p className="text-green-800 dark:text-green-200">
-                  Create export presets for different platforms to maintain consistency and save time. Most RAW
-                  processors allow you to save custom export settings for one-click optimization.
-                </p>
-              </div>
-
-              <h2 className="text-3xl font-bold mt-12 mb-6">Common Mobile RAW Processing Mistakes</h2>
-
-              <div className="space-y-6">
-                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-6">
-                  <h4 className="text-lg font-semibold text-red-900 dark:text-red-100 mb-2">❌ Over-processing</h4>
-                  <p className="text-red-800 dark:text-red-200">
-                    Avoid excessive saturation, contrast, or HDR effects. Mobile RAW files have great dynamic range, but
-                    subtle adjustments often look more professional than dramatic edits.
-                  </p>
-                </div>
-
-                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-6">
-                  <h4 className="text-lg font-semibold text-red-900 dark:text-red-100 mb-2">
-                    ❌ Ignoring White Balance
-                  </h4>
-                  <p className="text-red-800 dark:text-red-200">
-                    Mobile cameras often struggle with mixed lighting. Always check and correct white balance first -
-                    it's the foundation of good color reproduction.
-                  </p>
-                </div>
-
-                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-6">
-                  <h4 className="text-lg font-semibold text-red-900 dark:text-red-100 mb-2">❌ Wrong Color Space</h4>
-                  <p className="text-red-800 dark:text-red-200">
-                    Always export in sRGB color space for web use. Adobe RGB or ProPhoto RGB can cause color shifts when
-                    viewed on standard monitors and mobile devices.
-                  </p>
-                </div>
-
-                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-6">
-                  <h4 className="text-lg font-semibold text-red-900 dark:text-red-100 mb-2">❌ Excessive Sharpening</h4>
-                  <p className="text-red-800 dark:text-red-200">
-                    Mobile sensors are already quite sharp. Over-sharpening creates halos and artifacts. Use subtle
-                    sharpening and adjust based on final output size.
-                  </p>
-                </div>
-              </div>
-
-              <h2 className="text-3xl font-bold mt-12 mb-6">Advanced Mobile RAW Techniques</h2>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Focus Stacking</h3>
-              <p>
-                Combine multiple RAW images with different focus points to achieve greater depth of field. This
-                technique is particularly useful for macro photography and landscapes shot on mobile devices.
-              </p>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Exposure Bracketing</h3>
-              <p>
-                Capture multiple RAW exposures and blend them for extended dynamic range. Many mobile cameras support
-                automatic bracketing, or you can manually adjust exposure between shots.
-              </p>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Computational Photography Integration</h3>
-              <p>
-                Modern smartphones use computational photography features like Night Mode and Portrait Mode. When
-                available, these can be combined with RAW capture for the best of both worlds - computational
-                enhancement with RAW flexibility.
-              </p>
-
-              <h2 className="text-3xl font-bold mt-12 mb-6">Storage and Workflow Management</h2>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Cloud Storage Solutions</h3>
-              <ul>
-                <li>
-                  <strong>Adobe Creative Cloud:</strong> Seamless Lightroom sync
-                </li>
-                <li>
-                  <strong>Google Photos:</strong> Unlimited storage for original quality (paid)
-                </li>
-                <li>
-                  <strong>iCloud:</strong> Native iOS integration
-                </li>
-                <li>
-                  <strong>Dropbox:</strong> Universal compatibility
-                </li>
-                <li>
-                  <strong>OneDrive:</strong> Microsoft ecosystem integration
-                </li>
-              </ul>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4">Local Storage Management</h3>
-              <ul>
-                <li>Regularly transfer RAW files to computer or external storage</li>
-                <li>Delete processed RAW files from phone to free space</li>
-                <li>Use high-speed microSD cards for Android devices</li>
-                <li>Consider external storage solutions for iOS devices</li>
-              </ul>
-
-              <h2 className="text-3xl font-bold mt-12 mb-6">Future of Mobile RAW Photography</h2>
-              <p>Mobile RAW photography continues to evolve rapidly. Upcoming developments include:</p>
-              <ul>
-                <li>
-                  <strong>Larger sensors:</strong> Better low-light performance and dynamic range
-                </li>
-                <li>
-                  <strong>AI-powered processing:</strong> Smarter automatic adjustments
-                </li>
-                <li>
-                  <strong>Multi-lens RAW:</strong> Combining data from multiple camera modules
-                </li>
-                <li>
-                  <strong>Real-time RAW processing:</strong> Instant preview of processed results
-                </li>
-                <li>
-                  <strong>Cloud-based processing:</strong> Powerful editing without device limitations
-                </li>
-              </ul>
-
-              <h2 className="text-3xl font-bold mt-12 mb-6">Conclusion</h2>
-              <p>
-                Mobile RAW photography opens up incredible creative possibilities, allowing you to capture and process
-                images that rival traditional camera systems. While the files are larger and require processing, the
-                flexibility and quality improvements make it worthwhile for serious mobile photographers.
-              </p>
-
-              <p>
-                Start by enabling RAW capture on your device, experiment with different processing apps, and develop a
-                workflow that suits your needs. Remember that good mobile RAW processing is about enhancing what's
-                already there, not creating something that wasn't. With practice, you'll be creating stunning, web-ready
-                images that showcase the true potential of mobile photography.
-              </p>
+                </CardContent>
+              </Card>
             </div>
 
-            {/* CTA Section */}
-            <div className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl p-8 my-12 text-center">
-              <h3 className="text-2xl font-bold mb-4">Convert Your Mobile RAW Files</h3>
-              <p className="text-lg opacity-90 mb-6">
-                Process your mobile RAW images and optimize them for web sharing with our Advanced Image Converter.
-              </p>
-              <Button asChild className="bg-white text-pink-600 hover:bg-gray-100">
-                <Link href="/#converter">
-                  <BookOpen className="h-4 w-4 mr-2" />
-                  Start Converting Now
-                </Link>
+            <h2>Mobile RAW Capture Techniques</h2>
+
+            <h3>Camera Settings for RAW</h3>
+            <p>Optimizing your camera settings is crucial for getting the best RAW files:</p>
+            <ul>
+              <li>
+                <strong>Enable RAW Mode:</strong> Usually found in camera settings or pro mode
+              </li>
+              <li>
+                <strong>Manual Focus:</strong> Ensure critical areas are sharp
+              </li>
+              <li>
+                <strong>Exposure Control:</strong> Slightly underexpose to preserve highlights
+              </li>
+              <li>
+                <strong>ISO Management:</strong> Keep ISO as low as possible for best quality
+              </li>
+              <li>
+                <strong>White Balance:</strong> Set to daylight or manual for consistency
+              </li>
+            </ul>
+
+            <h3>Composition for RAW Processing</h3>
+            <p>When shooting RAW, consider how you'll process the image later:</p>
+            <ul>
+              <li>
+                <strong>Leave Room for Cropping:</strong> Shoot slightly wider than needed
+              </li>
+              <li>
+                <strong>Capture Full Dynamic Range:</strong> Don't clip highlights or shadows
+              </li>
+              <li>
+                <strong>Consider Color Grading:</strong> Neutral lighting works best for flexibility
+              </li>
+              <li>
+                <strong>Focus on Fundamentals:</strong> Good composition is still essential
+              </li>
+            </ul>
+
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-8">
+              <div className="flex items-start">
+                <Zap className="w-6 h-6 text-blue-500 mr-3 mt-1" />
+                <div>
+                  <h3 className="text-lg font-semibold text-blue-900 mb-2">Pro Tip</h3>
+                  <p className="text-blue-800">
+                    Use your phone's histogram if available. Aim to expose to the right (ETTR) without clipping
+                    highlights. You can always bring down exposure in post-processing.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h2>Mobile RAW Processing Apps</h2>
+
+            <h3>Professional Mobile Apps</h3>
+
+            <h4>Adobe Lightroom Mobile</h4>
+            <p>The mobile version of the industry-standard RAW processor offers powerful editing capabilities:</p>
+            <ul>
+              <li>Full RAW processing capabilities</li>
+              <li>Professional-grade adjustment tools</li>
+              <li>Preset and profile support</li>
+              <li>Cloud synchronization with desktop</li>
+              <li>Advanced masking and local adjustments</li>
+            </ul>
+
+            <h4>Snapseed (Google)</h4>
+            <p>Google's free photo editor with excellent RAW support:</p>
+            <ul>
+              <li>Intuitive gesture-based interface</li>
+              <li>Powerful selective adjustments</li>
+              <li>Professional filters and effects</li>
+              <li>Non-destructive editing</li>
+              <li>Export in multiple formats</li>
+            </ul>
+
+            <h4>VSCO</h4>
+            <p>Popular among mobile photographers for its film-inspired presets:</p>
+            <ul>
+              <li>High-quality film emulation presets</li>
+              <li>Advanced editing tools</li>
+              <li>RAW processing capabilities</li>
+              <li>Social sharing features</li>
+              <li>Video editing support</li>
+            </ul>
+
+            <h4>RNI Films</h4>
+            <p>Specialized in authentic film emulation:</p>
+            <ul>
+              <li>Accurate film stock emulations</li>
+              <li>Advanced color grading tools</li>
+              <li>Grain and texture controls</li>
+              <li>Professional workflow features</li>
+            </ul>
+
+            <h3>Platform-Specific Options</h3>
+
+            <h4>iOS Apps</h4>
+            <ul>
+              <li>
+                <strong>Darkroom:</strong> Powerful RAW editor with batch processing
+              </li>
+              <li>
+                <strong>Pixelmator Photo:</strong> AI-powered editing with RAW support
+              </li>
+              <li>
+                <strong>Affinity Photo:</strong> Desktop-class editing on mobile
+              </li>
+              <li>
+                <strong>ProCamera:</strong> Advanced camera app with built-in RAW processing
+              </li>
+            </ul>
+
+            <h4>Android Apps</h4>
+            <ul>
+              <li>
+                <strong>Photo Mate R3:</strong> Comprehensive RAW editor
+              </li>
+              <li>
+                <strong>PolaRoid:</strong> Film-inspired RAW processing
+              </li>
+              <li>
+                <strong>Open Camera:</strong> Open-source camera with RAW support
+              </li>
+              <li>
+                <strong>Camera FV-5:</strong> Professional camera app with RAW capabilities
+              </li>
+            </ul>
+
+            <h2>Mobile RAW Processing Workflow</h2>
+
+            <h3>Step 1: Import and Organization</h3>
+            <p>Organize your RAW files for efficient processing:</p>
+            <ul>
+              <li>Import RAW files into your chosen editing app</li>
+              <li>Create collections or albums for different shoots</li>
+              <li>Add keywords and ratings for easy searching</li>
+              <li>Back up original files to cloud storage</li>
+            </ul>
+
+            <h3>Step 2: Basic Adjustments</h3>
+            <p>Start with fundamental corrections:</p>
+            <ol>
+              <li>
+                <strong>Exposure:</strong> Correct overall brightness
+              </li>
+              <li>
+                <strong>Highlights/Shadows:</strong> Recover detail in extreme tones
+              </li>
+              <li>
+                <strong>White Balance:</strong> Correct color temperature
+              </li>
+              <li>
+                <strong>Contrast:</strong> Adjust overall contrast
+              </li>
+              <li>
+                <strong>Clarity/Texture:</strong> Enhance mid-tone contrast
+              </li>
+            </ol>
+
+            <h3>Step 3: Color Grading</h3>
+            <p>Develop your unique color style:</p>
+            <ul>
+              <li>
+                <strong>HSL Adjustments:</strong> Fine-tune individual colors
+              </li>
+              <li>
+                <strong>Color Grading:</strong> Add color tints to highlights, midtones, shadows
+              </li>
+              <li>
+                <strong>Calibration:</strong> Adjust camera color profile
+              </li>
+              <li>
+                <strong>Split Toning:</strong> Add complementary colors to highlights and shadows
+              </li>
+            </ul>
+
+            <h3>Step 4: Local Adjustments</h3>
+            <p>Make targeted improvements:</p>
+            <ul>
+              <li>
+                <strong>Masking:</strong> Select specific areas for adjustment
+              </li>
+              <li>
+                <strong>Radial Filters:</strong> Create vignettes or spotlight effects
+              </li>
+              <li>
+                <strong>Linear Gradients:</strong> Adjust skies or foregrounds
+              </li>
+              <li>
+                <strong>Brush Adjustments:</strong> Paint adjustments onto specific areas
+              </li>
+            </ul>
+
+            <h3>Step 5: Sharpening and Noise Reduction</h3>
+            <p>Optimize image quality:</p>
+            <ul>
+              <li>
+                <strong>Sharpening:</strong> Enhance edge definition
+              </li>
+              <li>
+                <strong>Noise Reduction:</strong> Reduce grain from high ISO
+              </li>
+              <li>
+                <strong>Masking:</strong> Apply sharpening only to edges
+              </li>
+              <li>
+                <strong>Detail Enhancement:</strong> Bring out texture and fine details
+              </li>
+            </ul>
+
+            <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
+              <div className="flex items-start">
+                <ImageIcon className="w-6 h-6 text-green-500 mr-3 mt-1" />
+                <div>
+                  <h3 className="text-lg font-semibold text-green-900 mb-2">Workflow Tip</h3>
+                  <p className="text-green-800">
+                    Process one image completely, then copy those settings to similar images in the same lighting
+                    conditions. This saves time and ensures consistency across your work.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h2>Optimizing for Web Delivery</h2>
+
+            <h3>Export Settings for Web</h3>
+            <p>Different platforms require different optimization strategies:</p>
+
+            <h4>Social Media Platforms</h4>
+            <div className="overflow-x-auto my-8">
+              <table className="w-full border-collapse border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="border border-gray-300 p-3 text-left">Platform</th>
+                    <th className="border border-gray-300 p-3 text-left">Optimal Size</th>
+                    <th className="border border-gray-300 p-3 text-left">Format</th>
+                    <th className="border border-gray-300 p-3 text-left">Quality</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 p-3">Instagram Feed</td>
+                    <td className="border border-gray-300 p-3">1080x1080px</td>
+                    <td className="border border-gray-300 p-3">JPEG</td>
+                    <td className="border border-gray-300 p-3">85-90%</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="border border-gray-300 p-3">Instagram Stories</td>
+                    <td className="border border-gray-300 p-3">1080x1920px</td>
+                    <td className="border border-gray-300 p-3">JPEG</td>
+                    <td className="border border-gray-300 p-3">85-90%</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 p-3">Facebook</td>
+                    <td className="border border-gray-300 p-3">1200x630px</td>
+                    <td className="border border-gray-300 p-3">JPEG</td>
+                    <td className="border border-gray-300 p-3">80-85%</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="border border-gray-300 p-3">Twitter</td>
+                    <td className="border border-gray-300 p-3">1200x675px</td>
+                    <td className="border border-gray-300 p-3">JPEG</td>
+                    <td className="border border-gray-300 p-3">80-85%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Website and Portfolio Use</h4>
+            <ul>
+              <li>
+                <strong>Full Size:</strong> 2048px on longest side, JPEG 90-95% quality
+              </li>
+              <li>
+                <strong>Gallery Thumbnails:</strong> 400-600px, JPEG 80-85% quality
+              </li>
+              <li>
+                <strong>Blog Images:</strong> 1200px wide, JPEG 85-90% quality
+              </li>
+              <li>
+                <strong>Hero Images:</strong> 1920px wide, JPEG 90-95% quality
+              </li>
+            </ul>
+
+            <h3>Advanced Web Optimization</h3>
+
+            <h4>Responsive Image Strategy</h4>
+            <p>Create multiple sizes for different devices:</p>
+            <ul>
+              <li>
+                <strong>Mobile:</strong> 480px wide
+              </li>
+              <li>
+                <strong>Tablet:</strong> 768px wide
+              </li>
+              <li>
+                <strong>Desktop:</strong> 1200px wide
+              </li>
+              <li>
+                <strong>High-DPI:</strong> 2x versions for retina displays
+              </li>
+            </ul>
+
+            <h4>Modern Format Support</h4>
+            <p>Consider newer formats for better compression:</p>
+            <ul>
+              <li>
+                <strong>WebP:</strong> 25-35% smaller than JPEG with similar quality
+              </li>
+              <li>
+                <strong>AVIF:</strong> 50% smaller than JPEG, growing browser support
+              </li>
+              <li>
+                <strong>HEIC:</strong> Excellent for iOS users
+              </li>
+              <li>
+                <strong>Fallback Strategy:</strong> Always provide JPEG fallbacks
+              </li>
+            </ul>
+
+            <h2>Mobile-Specific Challenges and Solutions</h2>
+
+            <h3>Storage Management</h3>
+            <p>RAW files are large and can quickly fill mobile storage:</p>
+            <ul>
+              <li>
+                <strong>Cloud Storage:</strong> Automatically sync RAW files to cloud services
+              </li>
+              <li>
+                <strong>External Storage:</strong> Use USB-C or Lightning external drives
+              </li>
+              <li>
+                <strong>Selective Sync:</strong> Only keep recent projects on device
+              </li>
+              <li>
+                <strong>Regular Cleanup:</strong> Delete processed files after export
+              </li>
+              <li>
+                <strong>Compression:</strong> Use efficient RAW formats when available
+              </li>
+            </ul>
+
+            <h3>Processing Power Limitations</h3>
+            <p>Mobile devices have limited processing power compared to desktops:</p>
+            <ul>
+              <li>
+                <strong>Batch Processing:</strong> Process multiple images overnight
+              </li>
+              <li>
+                <strong>Simplified Workflows:</strong> Focus on essential adjustments
+              </li>
+              <li>
+                <strong>Proxy Files:</strong> Work with smaller preview files when possible
+              </li>
+              <li>
+                <strong>Background Processing:</strong> Let apps process while doing other tasks
+              </li>
+            </ul>
+
+            <h3>Battery Management</h3>
+            <p>RAW processing is battery-intensive:</p>
+            <ul>
+              <li>
+                <strong>Power Management:</strong> Process images while charging
+              </li>
+              <li>
+                <strong>Efficient Apps:</strong> Choose apps optimized for mobile processors
+              </li>
+              <li>
+                <strong>Batch Operations:</strong> Process multiple images at once
+              </li>
+              <li>
+                <strong>Background Limits:</strong> Limit background processing
+              </li>
+            </ul>
+
+            <h2>Advanced Mobile Photography Techniques</h2>
+
+            <h3>Computational Photography</h3>
+            <p>Modern smartphones use AI and computational photography to enhance images:</p>
+            <ul>
+              <li>
+                <strong>HDR Processing:</strong> Combine multiple exposures automatically
+              </li>
+              <li>
+                <strong>Night Mode:</strong> AI-enhanced low-light photography
+              </li>
+              <li>
+                <strong>Portrait Mode:</strong> Computational depth of field effects
+              </li>
+              <li>
+                <strong>Smart HDR:</strong> Intelligent highlight and shadow recovery
+              </li>
+            </ul>
+
+            <h3>Multi-Frame Processing</h3>
+            <p>Combine multiple frames for better results:</p>
+            <ul>
+              <li>
+                <strong>Focus Stacking:</strong> Combine multiple focus points
+              </li>
+              <li>
+                <strong>Exposure Bracketing:</strong> Manual HDR processing
+              </li>
+              <li>
+                <strong>Noise Reduction:</strong> Average multiple frames to reduce noise
+              </li>
+              <li>
+                <strong>Super Resolution:</strong> Combine frames for higher resolution
+              </li>
+            </ul>
+
+            <h3>Creative Techniques</h3>
+            <p>Push the boundaries of mobile photography:</p>
+            <ul>
+              <li>
+                <strong>Long Exposure:</strong> Use ND filters or computational techniques
+              </li>
+              <li>
+                <strong>Light Painting:</strong> Creative use of artificial lighting
+              </li>
+              <li>
+                <strong>Macro Photography:</strong> Close-up work with additional lenses
+              </li>
+              <li>
+                <strong>Astrophotography:</strong> Capture stars and night sky
+              </li>
+            </ul>
+
+            <div className="bg-pink-50 border-l-4 border-pink-500 p-6 my-8">
+              <div className="flex items-start">
+                <Camera className="w-6 h-6 text-pink-500 mr-3 mt-1" />
+                <div>
+                  <h3 className="text-lg font-semibold text-pink-900 mb-2">Creative Challenge</h3>
+                  <p className="text-pink-800">
+                    Try shooting the same scene with different mobile photography techniques: standard photo, HDR,
+                    portrait mode, and night mode. Compare the RAW files and see how each mode affects the captured
+                    data.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h2>Building a Mobile Photography Portfolio</h2>
+
+            <h3>Consistency in Style</h3>
+            <p>Develop a recognizable editing style:</p>
+            <ul>
+              <li>
+                <strong>Color Palette:</strong> Stick to consistent color grading
+              </li>
+              <li>
+                <strong>Contrast Levels:</strong> Maintain similar contrast across images
+              </li>
+              <li>
+                <strong>Saturation:</strong> Develop a signature saturation level
+              </li>
+              <li>
+                <strong>Presets:</strong> Create and use custom presets
+              </li>
+            </ul>
+
+            <h3>Portfolio Platforms</h3>
+            <p>Choose the right platform for showcasing your work:</p>
+            <ul>
+              <li>
+                <strong>Instagram:</strong> Great for building audience and engagement
+              </li>
+              <li>
+                <strong>Behance:</strong> Professional portfolio platform
+              </li>
+              <li>
+                <strong>500px:</strong> Photography-focused community
+              </li>
+              <li>
+                <strong>Personal Website:</strong> Complete control over presentation
+              </li>
+            </ul>
+
+            <h2>Future of Mobile Photography</h2>
+            <p>Mobile photography continues to evolve rapidly with new technologies:</p>
+
+            <h3>Hardware Advances</h3>
+            <ul>
+              <li>
+                <strong>Larger Sensors:</strong> Better low-light performance and dynamic range
+              </li>
+              <li>
+                <strong>Periscope Lenses:</strong> Improved optical zoom capabilities
+              </li>
+              <li>
+                <strong>Computational Sensors:</strong> AI-powered image capture
+              </li>
+              <li>
+                <strong>Variable Aperture:</strong> More control over depth of field
+              </li>
+            </ul>
+
+            <h3>Software Evolution</h3>
+            <ul>
+              <li>
+                <strong>AI Enhancement:</strong> Intelligent image improvement
+              </li>
+              <li>
+                <strong>Real-time Processing:</strong> Live preview of edits
+              </li>
+              <li>
+                <strong>Cloud Processing:</strong> Offload intensive tasks to the cloud
+              </li>
+              <li>
+                <strong>AR Integration:</strong> Augmented reality photography tools
+              </li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>
+              Mobile photography has reached a point where the quality gap between smartphones and traditional cameras
+              continues to narrow. With proper technique, the right apps, and an understanding of RAW processing, you
+              can create professional-quality images entirely on your mobile device.
+            </p>
+            <p>
+              The key to success in mobile photography lies in understanding your tools, developing efficient workflows,
+              and continuously experimenting with new techniques. As technology continues to advance, the possibilities
+              for mobile photography will only expand.
+            </p>
+          </div>
+
+          {/* CTA Section */}
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-8 text-white text-center my-12">
+            <h2 className="text-2xl font-bold mb-4">Ready to Optimize Your Mobile Photos?</h2>
+            <p className="text-lg mb-6 opacity-90">Convert and optimize your mobile RAW files for web delivery</p>
+            <Link href="/">
+              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
+                <Download className="w-5 h-5 mr-2" />
+                Start Converting Now
               </Button>
-            </div>
+            </Link>
+          </div>
 
-            {/* FAQ Section */}
-            <div className="mt-16">
-              <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
-              <div className="space-y-6">
-                {faqs.map((faq, index) => (
-                  <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-                    <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{faq.answer}</p>
-                  </div>
-                ))}
+          {/* FAQ Section */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              <div className="border-l-4 border-blue-500 pl-6">
+                <h3 className="font-semibold mb-2">Should I always shoot RAW on my smartphone?</h3>
+                <p className="text-gray-600">
+                  Shoot RAW when you plan to edit the image or when lighting conditions are challenging. For casual
+                  snapshots and social media, JPEG is often sufficient and saves storage space.
+                </p>
+              </div>
+              <div className="border-l-4 border-blue-500 pl-6">
+                <h3 className="font-semibold mb-2">What's the best mobile app for RAW processing?</h3>
+                <p className="text-gray-600">
+                  Adobe Lightroom Mobile offers the most comprehensive RAW processing tools, but Snapseed is excellent
+                  for beginners and free users. Choose based on your skill level and needs.
+                </p>
+              </div>
+              <div className="border-l-4 border-blue-500 pl-6">
+                <h3 className="font-semibold mb-2">How much storage do RAW files take on mobile?</h3>
+                <p className="text-gray-600">
+                  Mobile RAW files typically range from 20-50MB each, depending on your phone's sensor. A 128GB phone
+                  can store roughly 3,000-6,000 RAW files, so cloud storage is recommended.
+                </p>
+              </div>
+              <div className="border-l-4 border-blue-500 pl-6">
+                <h3 className="font-semibold mb-2">Can mobile RAW files match DSLR quality?</h3>
+                <p className="text-gray-600">
+                  Modern flagship smartphones can produce RAW files with quality approaching entry-level DSLRs,
+                  especially in good lighting. However, DSLRs still have advantages in low light and dynamic range.
+                </p>
+              </div>
+              <div className="border-l-4 border-blue-500 pl-6">
+                <h3 className="font-semibold mb-2">What's the best format for sharing mobile photos online?</h3>
+                <p className="text-gray-600">
+                  JPEG remains the most compatible format for sharing. Use 85-90% quality for social media and 90-95%
+                  for portfolio work. Consider WebP for websites that support it.
+                </p>
               </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
+      </div>
     </div>
   )
 }
