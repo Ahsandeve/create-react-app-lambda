@@ -19,9 +19,6 @@ export default function Header() {
   const [isMobileBlogDropdownOpen, setIsMobileBlogDropdownOpen] = useState(false)
   const pathname = usePathname()
 
-  // Use a simple fallback instead of context for now
-  const domain = "Advanced Image Converter"
-
   // Blog dropdown hide delay
   const blogTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -78,7 +75,7 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            {domain}
+            Advanced Image Converter
           </motion.span>
         </Link>
 
