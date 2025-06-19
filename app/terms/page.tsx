@@ -1,262 +1,267 @@
 import type { Metadata } from "next"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { FileText, Users, Shield, AlertTriangle, Scale, Globe } from "lucide-react"
-import Link from "next/link"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { FileText, Shield, AlertTriangle, Scale, Users, Zap } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Terms of Service - Advanced Image Converter | Usage Terms & Conditions",
+  title: "Terms of Service - Advanced Image Converter | Usage Guidelines",
   description:
-    "Terms of service for Advanced Image Converter. Understand your rights and responsibilities when using our free image conversion tool.",
-  keywords: "terms of service, terms of use, image converter terms, legal terms, user agreement",
+    "Read our terms of service for using the Advanced Image Converter. Free image conversion tool with clear usage guidelines and user responsibilities.",
+  keywords:
+    "terms of service, usage guidelines, image converter terms, legal agreement, user agreement, service conditions",
   openGraph: {
     title: "Terms of Service - Advanced Image Converter",
     description:
-      "Read our terms of service to understand your rights and responsibilities when using our image conversion tool.",
+      "Clear and fair terms of service for our free image conversion tool. Understand your rights and responsibilities.",
     type: "website",
+    url: "https://image-converter.unaux.com/terms/",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms of Service - Advanced Image Converter",
+    description: "Fair and transparent terms for using our free image conversion service.",
+  },
+  alternates: {
+    canonical: "https://image-converter.unaux.com/terms/",
   },
 }
 
 export default function TermsPage() {
-  const termsSummary = [
+  const keyPoints = [
     {
-      icon: <FileText className="h-8 w-8 text-blue-600" />,
-      title: "Free to Use",
-      description: "Our service is completely free with no hidden costs or subscription fees.",
+      icon: <Users className="h-8 w-8 text-blue-500" />,
+      title: "Free for Everyone",
+      description: "Our service is completely free for personal and commercial use with no hidden fees.",
     },
     {
-      icon: <Users className="h-8 w-8 text-green-600" />,
-      title: "No Registration",
-      description: "Use our tool without creating accounts or providing personal information.",
-    },
-    {
-      icon: <Shield className="h-8 w-8 text-purple-600" />,
+      icon: <Shield className="h-8 w-8 text-green-500" />,
       title: "Privacy Protected",
-      description: "Your images are processed locally and never uploaded to our servers.",
+      description: "Your images are processed locally in your browser and never uploaded to our servers.",
     },
     {
-      icon: <AlertTriangle className="h-8 w-8 text-orange-600" />,
-      title: "Use Responsibly",
-      description: "Follow our guidelines for acceptable use and respect intellectual property.",
+      icon: <Zap className="h-8 w-8 text-yellow-500" />,
+      title: "No Registration",
+      description: "Use our tool immediately without creating accounts or providing personal information.",
     },
     {
-      icon: <Scale className="h-8 w-8 text-red-600" />,
-      title: "Legal Compliance",
-      description: "Ensure your use complies with all applicable laws and regulations.",
-    },
-    {
-      icon: <Globe className="h-8 w-8 text-indigo-600" />,
-      title: "Global Access",
-      description: "Available worldwide with respect for local laws and regulations.",
+      icon: <Scale className="h-8 w-8 text-purple-500" />,
+      title: "Fair Usage",
+      description: "Reasonable usage limits ensure the service remains fast and available for everyone.",
     },
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      {/* Hero Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Terms of Service
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-            Simple, fair terms for using our image conversion service. Your rights and responsibilities explained
-            clearly.
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="container mx-auto px-4 py-12">
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Terms of Service</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Clear, fair, and transparent terms for using our free image conversion service.
           </p>
-          <div className="bg-blue-100 dark:bg-blue-900/20 rounded-lg p-4 inline-block">
-            <p className="text-blue-800 dark:text-blue-200 font-semibold">
-              Effective Date: {new Date().toLocaleDateString()}
-            </p>
-          </div>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+            Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+          </p>
         </div>
-      </section>
 
-      {/* Terms Summary */}
-      <section className="py-16 px-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Terms at a Glance</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Quick overview of our terms and what they mean for you
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {termsSummary.map((term, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="mx-auto mb-4">{term.icon}</div>
-                  <CardTitle className="text-xl">{term.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">{term.description}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        {/* Key Points */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {keyPoints.map((point, index) => (
+            <Card key={index} className="text-center h-full">
+              <CardHeader>
+                <div className="mx-auto mb-4">{point.icon}</div>
+                <CardTitle className="text-lg">{point.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">{point.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-      </section>
 
-      {/* Detailed Terms */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <div className="prose prose-lg max-w-none dark:prose-invert">
-            <h2 className="text-2xl font-bold mb-6">1. Acceptance of Terms</h2>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
-              <p className="mb-4">
-                By accessing and using Advanced Image Converter, you accept and agree to be bound by the terms and
-                provision of this agreement. If you do not agree to these terms, please do not use our service.
-              </p>
+        {/* Detailed Terms */}
+        <div className="max-w-4xl mx-auto space-y-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <FileText className="h-6 w-6 text-primary" />
+                Acceptance of Terms
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="prose prose-gray max-w-none dark:prose-invert">
               <p>
-                These terms apply to all users of the service, including but not limited to individuals, businesses, and
-                organizations.
+                By accessing and using Advanced Image Converter ("the Service"), you accept and agree to be bound by the
+                terms and provision of this agreement.
               </p>
-            </div>
 
-            <h2 className="text-2xl font-bold mb-6">2. Description of Service</h2>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
-              <p className="mb-4">
-                Advanced Image Converter is a free, web-based tool that allows users to convert images between different
-                formats (JPG, PNG, WebP, AVIF, GIF, BMP, TIFF, and HEIC) using client-side processing.
+              <p>
+                If you do not agree to abide by the above, please do not use this service. These terms apply to all
+                visitors, users, and others who access or use the service.
               </p>
-              <p className="mb-4">Our service includes features such as:</p>
-              <ul className="list-disc list-inside space-y-2">
-                <li>Image format conversion</li>
-                <li>Quality and compression control</li>
-                <li>Batch processing capabilities</li>
-                <li>Image resizing functionality</li>
-                <li>Local processing without server uploads</li>
+
+              <h3>Changes to Terms</h3>
+              <p>
+                We reserve the right to update these terms at any time. Changes will be effective immediately upon
+                posting. Your continued use of the service after changes are posted constitutes acceptance of the
+                updated terms.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Users className="h-6 w-6 text-primary" />
+                Use of Service
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="prose prose-gray max-w-none dark:prose-invert">
+              <h3>Permitted Use</h3>
+              <p>You may use our service for:</p>
+              <ul>
+                <li>Converting image formats for personal or commercial purposes</li>
+                <li>Processing images you own or have permission to modify</li>
+                <li>Educational and research purposes</li>
+                <li>Integration into your own projects (subject to attribution requirements)</li>
               </ul>
-            </div>
 
-            <h2 className="text-2xl font-bold mb-6">3. User Responsibilities</h2>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
-              <h3 className="text-xl font-semibold mb-4">Acceptable Use</h3>
-              <p className="mb-4">
-                You agree to use our service only for lawful purposes and in accordance with these terms. You must not:
-              </p>
-              <ul className="list-disc list-inside space-y-2 mb-4">
-                <li>Use the service for any illegal or unauthorized purpose</li>
-                <li>Process images that violate copyright or intellectual property rights</li>
+              <h3>Prohibited Use</h3>
+              <p>You may not use our service to:</p>
+              <ul>
+                <li>Process copyrighted images without proper authorization</li>
+                <li>Convert illegal, harmful, or offensive content</li>
                 <li>Attempt to reverse engineer or compromise the service</li>
-                <li>Use automated tools to access the service excessively</li>
-                <li>Process images containing illegal, harmful, or offensive content</li>
+                <li>Use automated tools to overload our servers</li>
+                <li>Violate any applicable laws or regulations</li>
               </ul>
 
-              <h3 className="text-xl font-semibold mb-4">Content Responsibility</h3>
+              <h3>Usage Limits</h3>
+              <p>To ensure fair access for all users, we may implement reasonable usage limits including:</p>
+              <ul>
+                <li>Maximum file size limits (currently 50MB per file)</li>
+                <li>Rate limiting for excessive usage</li>
+                <li>Temporary restrictions for abuse prevention</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="h-6 w-6 text-primary" />
+                Privacy and Data
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="prose prose-gray max-w-none dark:prose-invert">
+              <h3>Your Content</h3>
               <p>
-                You are solely responsible for the images you process using our service. Ensure you have the necessary
-                rights and permissions for any content you convert.
-              </p>
-            </div>
-
-            <h2 className="text-2xl font-bold mb-6">4. Intellectual Property</h2>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
-              <h3 className="text-xl font-semibold mb-4">Your Content</h3>
-              <p className="mb-4">
-                You retain all rights to the images you process using our service. We do not claim ownership of your
-                content and do not store or access your images.
+                You retain all rights to images you process through our service. We do not claim ownership of your
+                content.
               </p>
 
-              <h3 className="text-xl font-semibold mb-4">Our Service</h3>
+              <h3>Data Processing</h3>
+              <p>All image processing occurs locally in your browser. We do not:</p>
+              <ul>
+                <li>Upload your images to our servers</li>
+                <li>Store your images in any form</li>
+                <li>Access or analyze your image content</li>
+                <li>Share your images with third parties</li>
+              </ul>
+
+              <h3>Responsibility for Content</h3>
               <p>
-                The Advanced Image Converter service, including its design, code, and functionality, is protected by
-                intellectual property laws. You may not copy, modify, or distribute our service without permission.
+                You are solely responsible for the images you process and must ensure you have the right to modify and
+                convert them.
               </p>
-            </div>
+            </CardContent>
+          </Card>
 
-            <h2 className="text-2xl font-bold mb-6">5. Privacy and Data Protection</h2>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
-              <p className="mb-4">Your privacy is important to us. Our service is designed with privacy by default:</p>
-              <ul className="list-disc list-inside space-y-2">
-                <li>All image processing happens in your browser</li>
-                <li>No images are uploaded to our servers</li>
-                <li>We don't collect personal information</li>
-                <li>No registration or accounts required</li>
-              </ul>
-              <p className="mt-4">
-                For complete details, please read our{" "}
-                <Link href="/privacy" className="text-primary hover:underline">
-                  Privacy Policy
-                </Link>
-                .
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <AlertTriangle className="h-6 w-6 text-primary" />
+                Disclaimers and Limitations
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="prose prose-gray max-w-none dark:prose-invert">
+              <h3>Service Availability</h3>
+              <p>
+                We strive to maintain high availability but cannot guarantee uninterrupted service. The service is
+                provided "as is" without warranties of any kind.
               </p>
-            </div>
 
-            <h2 className="text-2xl font-bold mb-6">6. Service Availability</h2>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
-              <p className="mb-4">
-                We strive to provide reliable service but cannot guarantee 100% uptime. The service may be temporarily
-                unavailable due to:
+              <h3>Limitation of Liability</h3>
+              <p>
+                To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special,
+                consequential, or punitive damages, including but not limited to:
               </p>
-              <ul className="list-disc list-inside space-y-2">
-                <li>Maintenance and updates</li>
-                <li>Technical issues beyond our control</li>
-                <li>Internet connectivity problems</li>
-                <li>Browser compatibility issues</li>
-              </ul>
-              <p className="mt-4">
-                We reserve the right to modify, suspend, or discontinue the service at any time without notice.
-              </p>
-            </div>
-
-            <h2 className="text-2xl font-bold mb-6">7. Limitation of Liability</h2>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
-              <p className="mb-4">
-                Our service is provided "as is" without warranties of any kind. We are not liable for:
-              </p>
-              <ul className="list-disc list-inside space-y-2">
+              <ul>
                 <li>Loss of data or images</li>
-                <li>Damages resulting from service interruptions</li>
-                <li>Issues with converted image quality</li>
-                <li>Browser compatibility problems</li>
-                <li>Indirect or consequential damages</li>
+                <li>Business interruption</li>
+                <li>Loss of profits or revenue</li>
+                <li>Cost of substitute services</li>
               </ul>
-              <p className="mt-4">
-                Your use of the service is at your own risk. Always keep backups of important images.
-              </p>
-            </div>
 
-            <h2 className="text-2xl font-bold mb-6">8. Indemnification</h2>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
+              <h3>Technical Limitations</h3>
+              <p>Image conversion quality and compatibility may vary based on:</p>
+              <ul>
+                <li>Browser capabilities and version</li>
+                <li>Device performance and memory</li>
+                <li>Original image format and quality</li>
+                <li>Network connectivity</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Scale className="h-6 w-6 text-primary" />
+                Legal and Compliance
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="prose prose-gray max-w-none dark:prose-invert">
+              <h3>Governing Law</h3>
               <p>
-                You agree to indemnify and hold us harmless from any claims, damages, or expenses arising from your use
-                of the service, including but not limited to copyright infringement claims related to images you
-                process.
+                These terms shall be governed by and construed in accordance with applicable laws, without regard to
+                conflict of law principles.
               </p>
-            </div>
 
-            <h2 className="text-2xl font-bold mb-6">9. Governing Law</h2>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
+              <h3>Dispute Resolution</h3>
               <p>
-                These terms shall be governed by and construed in accordance with applicable laws. Any disputes shall be
-                resolved through appropriate legal channels.
+                Any disputes arising from the use of this service will be resolved through good faith negotiation. If
+                resolution cannot be reached, disputes may be subject to binding arbitration.
               </p>
-            </div>
 
-            <h2 className="text-2xl font-bold mb-6">10. Changes to Terms</h2>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
+              <h3>Severability</h3>
               <p>
-                We may update these terms from time to time. Changes will be posted on this page with an updated
-                effective date. Continued use of our service constitutes acceptance of any changes.
+                If any provision of these terms is found to be unenforceable, the remaining provisions will remain in
+                full force and effect.
               </p>
-            </div>
 
-            <h2 className="text-2xl font-bold mb-6">11. Contact Information</h2>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-              <p className="mb-4">If you have any questions about these terms, please contact us:</p>
-              <ul className="list-disc list-inside space-y-2">
+              <h3>Entire Agreement</h3>
+              <p>
+                These terms constitute the entire agreement between you and Advanced Image Converter regarding the use
+                of the service.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Contact Information</CardTitle>
+            </CardHeader>
+            <CardContent className="prose prose-gray max-w-none dark:prose-invert">
+              <p>If you have any questions about these Terms of Service, please contact us at:</p>
+              <ul>
                 <li>Email: legal@imageconverter.com</li>
-                <li>
-                  Contact Form:{" "}
-                  <Link href="/contact" className="text-primary hover:underline">
-                    Contact Us
-                  </Link>
-                </li>
+                <li>Website: Contact form on our website</li>
               </ul>
-            </div>
-          </div>
+
+              <p>We will respond to all inquiries within 48 hours during business days.</p>
+            </CardContent>
+          </Card>
         </div>
-      </section>
+      </div>
     </div>
   )
 }

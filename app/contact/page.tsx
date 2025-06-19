@@ -1,265 +1,175 @@
 import type { Metadata } from "next"
+import ContactForm from "@/components/contact-form"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Mail, MessageSquare, Phone, Clock, Send } from "lucide-react"
+import { Mail, MessageSquare, Clock } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Contact Us - Advanced Image Converter | Get Help & Support",
   description:
-    "Contact Advanced Image Converter for support, questions, or feedback. We're here to help with your image conversion needs.",
-  keywords: "contact image converter, support, help, customer service, feedback, technical support",
+    "Need help with image conversion? Contact our support team for assistance with JPG, PNG, WebP, AVIF, GIF, BMP, TIFF conversion issues and questions.",
+  keywords:
+    "contact image converter support, help with image conversion, technical support, customer service, image format help",
   openGraph: {
-    title: "Contact Advanced Image Converter - Get Help & Support",
+    title: "Contact Advanced Image Converter Support Team",
     description:
-      "Need help with image conversion? Contact our support team for assistance with our free image conversion tool.",
+      "Get help with image conversion issues. Our support team is ready to assist with any questions about our free image converter tool.",
     type: "website",
+    url: "https://image-converter.unaux.com/contact/",
+  },
+  twitter: {
+    card: "summary",
+    title: "Contact Advanced Image Converter Support",
+    description: "Need help with image conversion? Contact our friendly support team for assistance.",
+  },
+  alternates: {
+    canonical: "https://image-converter.unaux.com/contact/",
   },
 }
 
 export default function ContactPage() {
-  const contactMethods = [
+  const contactInfo = [
     {
-      icon: <Mail className="h-8 w-8 text-blue-600" />,
+      icon: <Mail className="h-6 w-6 text-primary" />,
       title: "Email Support",
-      description: "Get detailed help via email",
-      detail: "support@imageconverter.com",
-      time: "Response within 24 hours",
+      description: "Get help via email",
+      details: "support@imageconverter.com",
+      note: "We respond within 24 hours",
     },
     {
-      icon: <MessageSquare className="h-8 w-8 text-green-600" />,
+      icon: <MessageSquare className="h-6 w-6 text-primary" />,
       title: "Live Chat",
-      description: "Instant help when available",
-      detail: "Available on our website",
-      time: "Mon-Fri, 9 AM - 6 PM UTC",
+      description: "Chat with our team",
+      details: "Available on our website",
+      note: "Monday - Friday, 9 AM - 6 PM EST",
     },
     {
-      icon: <Phone className="h-8 w-8 text-purple-600" />,
-      title: "Community Forum",
-      description: "Get help from our community",
-      detail: "forum.imageconverter.com",
-      time: "24/7 community support",
+      icon: <Clock className="h-6 w-6 text-primary" />,
+      title: "Response Time",
+      description: "Quick support",
+      details: "Average: 2-4 hours",
+      note: "During business hours",
     },
   ]
 
-  const supportTopics = [
+  const commonQuestions = [
     {
-      title: "Technical Issues",
-      description: "Problems with image conversion, browser compatibility, or tool functionality",
+      question: "How do I convert multiple images at once?",
+      answer:
+        "Simply drag and drop multiple files into the upload area, select your desired format, and click 'Convert All Files'.",
     },
     {
-      title: "Feature Requests",
-      description: "Suggestions for new features or improvements to existing functionality",
+      question: "Why isn't my image converting?",
+      answer:
+        "Check that your file is under 50MB and in a supported format. Try refreshing the page and uploading again.",
     },
     {
-      title: "Privacy & Security",
-      description: "Questions about data handling, privacy, or security measures",
+      question: "Is my data safe?",
+      answer:
+        "Yes! All processing happens in your browser. Your images never leave your device or get uploaded to our servers.",
     },
     {
-      title: "Business Inquiries",
-      description: "Partnership opportunities, licensing, or commercial use questions",
+      question: "Can I use this tool offline?",
+      answer:
+        "The tool requires an internet connection to load initially, but once loaded, the conversion process works offline.",
     },
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      {/* Hero Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-            Contact Us
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-            We're here to help! Get in touch with our support team for assistance, feedback, or questions.
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="container mx-auto px-4 py-12">
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Get in Touch</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Have questions about image conversion? Need technical support? We're here to help! Reach out to our friendly
+            support team for assistance.
           </p>
         </div>
-      </section>
 
-      {/* Contact Methods */}
-      <section className="py-16 px-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How to Reach Us</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Choose the best way to get in touch based on your needs
-            </p>
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Contact Form */}
+          <div>
+            <Card className="h-fit">
+              <CardHeader>
+                <CardTitle className="text-2xl">Send us a Message</CardTitle>
+                <CardDescription>
+                  Fill out the form below and we'll get back to you as soon as possible.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ContactForm />
+              </CardContent>
+            </Card>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {contactMethods.map((method, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="mx-auto mb-4">{method.icon}</div>
-                  <CardTitle className="text-xl">{method.title}</CardTitle>
-                  <CardDescription>{method.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="font-semibold text-primary mb-2">{method.detail}</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{method.time}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Form */}
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Send us a Message</h2>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="John" />
-                  </div>
-                  <div>
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Doe" />
-                  </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input id="email" type="email" placeholder="john@example.com" />
-                </div>
-
-                <div>
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" placeholder="How can we help you?" />
-                </div>
-
-                <div>
-                  <Label htmlFor="category">Category</Label>
-                  <select
-                    id="category"
-                    className="w-full rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2"
-                  >
-                    <option value="">Select a category</option>
-                    <option value="technical">Technical Issues</option>
-                    <option value="feature">Feature Request</option>
-                    <option value="privacy">Privacy & Security</option>
-                    <option value="business">Business Inquiry</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" placeholder="Tell us more about your question or issue..." rows={6} />
-                </div>
-
-                <Button type="submit" className="w-full" size="lg">
-                  <Send className="h-4 w-4 mr-2" />
-                  Send Message
-                </Button>
-              </form>
+          {/* Contact Information */}
+          <div className="space-y-8">
+            {/* Contact Methods */}
+            <div className="grid gap-6">
+              {contactInfo.map((info, index) => (
+                <Card key={index}>
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="bg-primary/10 p-3 rounded-lg">{info.icon}</div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-lg mb-1">{info.title}</h3>
+                        <p className="text-gray-600 dark:text-gray-300 mb-1">{info.description}</p>
+                        <p className="font-medium text-primary mb-1">{info.details}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{info.note}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
 
-            {/* Support Info */}
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Support Topics</h2>
-              <div className="space-y-4">
-                {supportTopics.map((topic, index) => (
-                  <Card key={index}>
-                    <CardHeader>
-                      <CardTitle className="text-lg">{topic.title}</CardTitle>
-                      <CardDescription>{topic.description}</CardDescription>
-                    </CardHeader>
-                  </Card>
+            {/* Quick Help */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Quick Help</CardTitle>
+                <CardDescription>Common questions and answers to get you started quickly.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {commonQuestions.map((qa, index) => (
+                  <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-4 last:border-b-0">
+                    <h4 className="font-medium text-gray-900 dark:text-white mb-2">{qa.question}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{qa.answer}</p>
+                  </div>
                 ))}
-              </div>
+              </CardContent>
+            </Card>
 
-              <Card className="mt-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Clock className="h-5 w-5" />
-                    Response Times
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span>Technical Issues</span>
-                      <span className="font-semibold">4-8 hours</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>General Questions</span>
-                      <span className="font-semibold">12-24 hours</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Feature Requests</span>
-                      <span className="font-semibold">2-3 days</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Business Inquiries</span>
-                      <span className="font-semibold">1-2 days</span>
-                    </div>
+            {/* Business Hours */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl flex items-center gap-2">
+                  <Clock className="h-5 w-5 text-primary" />
+                  Support Hours
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600 dark:text-gray-300">Monday - Friday</span>
+                    <span className="font-medium">9:00 AM - 6:00 PM EST</span>
                   </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 px-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">Quick answers to common questions</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card>
-              <CardHeader>
-                <CardTitle>Is the service really free?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  Yes, Advanced Image Converter is completely free to use with no hidden costs or subscription fees.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Are my images secure?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Absolutely. All processing happens in your browser - your images never leave your device.</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>What formats are supported?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>We support JPG, PNG, WebP, AVIF, GIF, BMP, TIFF, and HEIC formats with more coming soon.</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Is there a file size limit?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  No server-side limits! Processing happens on your device, so it depends on your browser and device
-                  capabilities.
+                  <div className="flex justify-between">
+                    <span className="text-gray-600 dark:text-gray-300">Saturday</span>
+                    <span className="font-medium">10:00 AM - 4:00 PM EST</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600 dark:text-gray-300">Sunday</span>
+                    <span className="font-medium">Closed</span>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+                  Email support is available 24/7. We'll respond within 24 hours.
                 </p>
               </CardContent>
             </Card>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   )
 }
