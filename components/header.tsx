@@ -1,54 +1,49 @@
-"use client";
+"use client"
 
-import { useState, useRef } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useAuth } from "./auth-provider";
-import { Button } from "@/components/ui/button";
-import { ModeToggle } from "./ui/mode-toggle";
-import { Menu, X, ImageIcon, ChevronDown, ChevronRight } from "lucide-react";
-import LoginDialog from "./login-dialog";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { useDomain } from "@/context/DomainContext";
+import { useState, useRef } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useAuth } from "./auth-provider"
+import { Button } from "@/components/ui/button"
+import { ModeToggle } from "./ui/mode-toggle"
+import { Menu, X, ImageIcon, ChevronDown, ChevronRight } from "lucide-react"
+import LoginDialog from "./login-dialog"
+import { motion } from "framer-motion"
+import { cn } from "@/lib/utils"
+import { useDomain } from "@/context/DomainContext"
+
 export default function Header() {
-  const { user, logout } = useAuth();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isBlogDropdownOpen, setIsBlogDropdownOpen] = useState(false);
-  const [isMobileBlogDropdownOpen, setIsMobileBlogDropdownOpen] =
-    useState(false);
-  const pathname = usePathname();
-  const { domain, setDomain } = useDomain();
+  const { user, logout } = useAuth()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isLoginOpen, setIsLoginOpen] = useState(false)
+  const [isBlogDropdownOpen, setIsBlogDropdownOpen] = useState(false)
+  const [isMobileBlogDropdownOpen, setIsMobileBlogDropdownOpen] = useState(false)
+  const pathname = usePathname()
+
+  // Use the domain context with fallback
+  const { domain } = useDomain()
+
   // Blog dropdown hide delay
-  const blogTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const blogTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const isActive = (path: string) => {
     if (path.startsWith("/#")) {
-      const hash = path.substring(1);
-      return (
-        pathname === "/" &&
-        typeof window !== "undefined" &&
-        window.location.hash === hash
-      );
+      const hash = path.substring(1)
+      return pathname === "/" && typeof window !== "undefined" && window.location.hash === hash
     }
 
     if (path === "/") {
-      return pathname === "/";
+      return pathname === "/"
     }
 
-    if (
-      path.startsWith("/blog/category/") &&
-      pathname.startsWith("/blog/category/")
-    ) {
-      return path === pathname;
+    if (path.startsWith("/blog/category/") && pathname.startsWith("/blog/category/")) {
+      return path === pathname
     }
 
-    return pathname.startsWith(path);
-  };
+    return pathname.startsWith(path)
+  }
 
-  const isBlogCategoryActive =
-    pathname.startsWith("/blog/category/") || pathname === "/blog";
+  const isBlogCategoryActive = pathname.startsWith("/blog/category/") || pathname === "/blog"
 
   const blogCategories = [
     { name: "All Posts", path: "/blog" },
@@ -58,28 +53,24 @@ export default function Header() {
     { name: "Photography", path: "/blog/category/photography/" },
     { name: "Technical", path: "/blog/category/technical/" },
     { name: "Development", path: "/blog/category/development/" },
-  ];
+  ]
 
   const handleMouseEnter = () => {
-    if (blogTimeoutRef.current) clearTimeout(blogTimeoutRef.current);
-    setIsBlogDropdownOpen(true);
-  };
+    if (blogTimeoutRef.current) clearTimeout(blogTimeoutRef.current)
+    setIsBlogDropdownOpen(true)
+  }
 
   const handleMouseLeave = () => {
     blogTimeoutRef.current = setTimeout(() => {
-      setIsBlogDropdownOpen(false);
-    }, 400);
-  };
+      setIsBlogDropdownOpen(false)
+    }, 400)
+  }
 
   return (
     <header className="select-none sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <motion.div
-            initial={{ rotate: -10 }}
-            animate={{ rotate: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <motion.div initial={{ rotate: -10 }} animate={{ rotate: 0 }} transition={{ duration: 0.5 }}>
             <ImageIcon className="h-6 w-6 text-primary" />
           </motion.div>
           <motion.span
@@ -88,47 +79,43 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            {domain}
+            {domain || "Image Converter"}
           </motion.span>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
           <Link
-            href="#converter"
+            href="/#converter"
             className={cn(
               "text-sm font-medium transition-colors relative",
-              isActive("#converter")
+              isActive("/#converter")
                 ? "text-primary after:absolute after:bottom-[-18px] after:left-0 after:right-0 after:h-[3px] after:bg-primary"
-                : "hover:text-primary"
+                : "hover:text-primary",
             )}
           >
             Tool
           </Link>
           <Link
-            href="#features"
+            href="/#features"
             className={cn(
               "text-sm font-medium transition-colors relative",
-              isActive("#features")
+              isActive("/#features")
                 ? "text-primary after:absolute after:bottom-[-18px] after:left-0 after:right-0 after:h-[3px] after:bg-primary"
-                : "hover:text-primary"
+                : "hover:text-primary",
             )}
           >
             Features
           </Link>
 
           {/* Blog Dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
+          <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <button
               type="button"
               className={cn(
                 "text-sm font-medium transition-colors relative flex items-center gap-1",
                 isBlogCategoryActive
                   ? "text-primary after:absolute after:bottom-[-18px] after:left-0 after:right-0 after:h-[3px] after:bg-primary"
-                  : "hover:text-primary"
+                  : "hover:text-primary",
               )}
             >
               Blog
@@ -146,7 +133,7 @@ export default function Header() {
                         "block px-4 py-2 text-sm",
                         isActive(category.path)
                           ? "bg-primary/10 text-primary font-medium"
-                          : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                          : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700",
                       )}
                       onClick={() => setIsBlogDropdownOpen(false)}
                     >
@@ -164,7 +151,7 @@ export default function Header() {
               "text-sm font-medium transition-colors relative",
               isActive("/about")
                 ? "text-primary after:absolute after:bottom-[-18px] after:left-0 after:right-0 after:h-[3px] after:bg-primary"
-                : "hover:text-primary"
+                : "hover:text-primary",
             )}
           >
             About
@@ -175,7 +162,7 @@ export default function Header() {
               "text-sm font-medium transition-colors relative",
               isActive("/#contact")
                 ? "text-primary after:absolute after:bottom-[-18px] after:left-0 after:right-0 after:h-[3px] after:bg-primary"
-                : "hover:text-primary"
+                : "hover:text-primary",
             )}
           >
             Contact
@@ -188,12 +175,7 @@ export default function Header() {
           {user ? (
             <div className="hidden md:flex items-center space-x-2">
               <span className="text-sm">Hello, {user.name}</span>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={logout}
-                className="rounded-custom"
-              >
+              <Button variant="outline" size="sm" onClick={logout} className="rounded-custom">
                 Logout
               </Button>
             </div>
@@ -213,11 +195,7 @@ export default function Header() {
             className="md:hidden rounded-custom"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
       </div>
@@ -236,9 +214,7 @@ export default function Header() {
               href="/#converter"
               className={cn(
                 "text-sm font-medium",
-                isActive("/#converter")
-                  ? "text-primary font-bold"
-                  : "hover:text-primary"
+                isActive("/#converter") ? "text-primary font-bold" : "hover:text-primary",
               )}
               onClick={() => setIsMenuOpen(false)}
             >
@@ -248,9 +224,7 @@ export default function Header() {
               href="/#features"
               className={cn(
                 "text-sm font-medium",
-                isActive("/#features")
-                  ? "text-primary font-bold"
-                  : "hover:text-primary"
+                isActive("/#features") ? "text-primary font-bold" : "hover:text-primary",
               )}
               onClick={() => setIsMenuOpen(false)}
             >
@@ -261,20 +235,12 @@ export default function Header() {
                 type="button"
                 className={cn(
                   "text-sm font-medium flex items-center justify-between w-full",
-                  isBlogCategoryActive
-                    ? "text-primary font-bold"
-                    : "hover:text-primary"
+                  isBlogCategoryActive ? "text-primary font-bold" : "hover:text-primary",
                 )}
-                onClick={() =>
-                  setIsMobileBlogDropdownOpen(!isMobileBlogDropdownOpen)
-                }
+                onClick={() => setIsMobileBlogDropdownOpen(!isMobileBlogDropdownOpen)}
               >
                 <span>Blog</span>
-                {isMobileBlogDropdownOpen ? (
-                  <ChevronDown className="h-4 w-4" />
-                ) : (
-                  <ChevronRight className="h-4 w-4" />
-                )}
+                {isMobileBlogDropdownOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
               </button>
               {isMobileBlogDropdownOpen && (
                 <div className="pl-4 mt-2 space-y-2 border-l border-gray-200 dark:border-gray-700">
@@ -286,7 +252,7 @@ export default function Header() {
                         "block text-sm",
                         isActive(category.path)
                           ? "text-primary font-medium"
-                          : "text-gray-700 dark:text-gray-300 hover:text-primary"
+                          : "text-gray-700 dark:text-gray-300 hover:text-primary",
                       )}
                       onClick={() => setIsMenuOpen(false)}
                     >
@@ -300,9 +266,7 @@ export default function Header() {
               href="/about"
               className={cn(
                 "text-sm font-medium",
-                isActive("/about")
-                  ? "text-primary font-bold"
-                  : "hover:text-primary"
+                isActive("/about") ? "text-primary font-bold" : "hover:text-primary",
               )}
               onClick={() => setIsMenuOpen(false)}
             >
@@ -312,9 +276,7 @@ export default function Header() {
               href="/#contact-form"
               className={cn(
                 "text-sm font-medium",
-                isActive("/#contact-form")
-                  ? "text-primary font-bold"
-                  : "hover:text-primary"
+                isActive("/#contact-form") ? "text-primary font-bold" : "hover:text-primary",
               )}
               onClick={() => setIsMenuOpen(false)}
             >
@@ -322,12 +284,7 @@ export default function Header() {
             </Link>
             <Link
               href="/#faq"
-              className={cn(
-                "text-sm font-medium",
-                isActive("/#faq")
-                  ? "text-primary font-bold"
-                  : "hover:text-primary"
-              )}
+              className={cn("text-sm font-medium", isActive("/#faq") ? "text-primary font-bold" : "hover:text-primary")}
               onClick={() => setIsMenuOpen(false)}
             >
               FAQ
@@ -336,12 +293,7 @@ export default function Header() {
             {user ? (
               <div className="flex flex-col space-y-2 pt-2 border-t">
                 <span className="text-sm">Hello, {user.name}</span>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={logout}
-                  className="rounded-custom"
-                >
+                <Button variant="outline" size="sm" onClick={logout} className="rounded-custom">
                   Logout
                 </Button>
               </div>
@@ -351,8 +303,8 @@ export default function Header() {
                 size="sm"
                 className="mt-2 rounded-custom"
                 onClick={() => {
-                  setIsLoginOpen(true);
-                  setIsMenuOpen(false);
+                  setIsLoginOpen(true)
+                  setIsMenuOpen(false)
                 }}
               >
                 Login
@@ -364,5 +316,5 @@ export default function Header() {
 
       <LoginDialog open={isLoginOpen} onOpenChange={setIsLoginOpen} />
     </header>
-  );
+  )
 }
