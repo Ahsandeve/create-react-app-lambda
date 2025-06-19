@@ -1,238 +1,232 @@
 import type { Metadata } from "next"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Shield, Eye, Lock, Server, Cookie, UserCheck } from "lucide-react"
+import { Shield, Eye, Server, Lock, FileText, Users } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - Advanced Image Converter | Your Data Protection",
+  title: "Privacy Policy - Advanced Image Converter | Your Privacy is Our Priority",
   description:
-    "Learn how Advanced Image Converter protects your privacy. All image processing happens locally in your browser - no uploads, no data collection, complete privacy.",
-  keywords:
-    "privacy policy, data protection, secure image conversion, no upload image converter, browser-based processing, GDPR compliant",
+    "Learn how we protect your privacy with local image processing. No data collection, no server uploads, complete privacy protection for your image conversion needs.",
+  keywords: "privacy policy, image converter privacy, local processing, no data collection, GDPR compliant",
   openGraph: {
     title: "Privacy Policy - Advanced Image Converter",
-    description:
-      "Your privacy is our priority. Learn how we protect your data with local browser processing and zero data collection.",
+    description: "Complete privacy protection with local image processing",
     type: "website",
-    url: "https://image-converter.unaux.com/privacy/",
-  },
-  twitter: {
-    card: "summary",
-    title: "Privacy Policy - Advanced Image Converter",
-    description: "Complete privacy protection with local browser processing. No uploads, no data collection.",
-  },
-  alternates: {
-    canonical: "https://image-converter.unaux.com/privacy/",
   },
 }
 
 export default function PrivacyPage() {
-  const privacyFeatures = [
-    {
-      icon: <Shield className="h-8 w-8 text-green-500" />,
-      title: "Local Processing",
-      description: "All image conversion happens directly in your browser. Your files never leave your device.",
-    },
-    {
-      icon: <Eye className="h-8 w-8 text-blue-500" />,
-      title: "No Data Collection",
-      description: "We don't collect, store, or analyze your personal data or images in any way.",
-    },
-    {
-      icon: <Lock className="h-8 w-8 text-purple-500" />,
-      title: "Secure Connection",
-      description: "All communications are encrypted with industry-standard SSL/TLS protocols.",
-    },
-    {
-      icon: <Server className="h-8 w-8 text-orange-500" />,
-      title: "No Server Storage",
-      description: "Your images are never uploaded to our servers or stored anywhere online.",
-    },
-  ]
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <div className="container mx-auto px-4 py-16 max-w-4xl">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">Privacy Policy</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Your privacy is our top priority. Learn how we protect your data and ensure complete confidentiality.
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+            Privacy Policy
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Your privacy is our absolute priority. Learn how we protect your data with our privacy-first approach.
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-            Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-          </p>
+          <div className="flex justify-center mt-6">
+            <div className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-4 py-2 rounded-full text-sm font-medium">
+              Last Updated: December 2024
+            </div>
+          </div>
         </div>
 
-        {/* Privacy Features */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {privacyFeatures.map((feature, index) => (
-            <Card key={index} className="text-center h-full">
-              <CardHeader>
-                <div className="mx-auto mb-4">{feature.icon}</div>
-                <CardTitle className="text-lg">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">{feature.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        {/* Privacy Promise */}
+        <Card className="mb-12 p-8 bg-gradient-to-r from-green-600 to-blue-600 text-white">
+          <CardHeader className="text-center pb-6">
+            <Shield className="h-16 w-16 text-white mx-auto mb-4" />
+            <CardTitle className="text-2xl font-bold">Our Privacy Promise</CardTitle>
+          </CardHeader>
+          <CardContent className="text-center">
+            <p className="text-lg opacity-95 mb-4">
+              <strong>Your images never leave your device.</strong> All processing happens locally in your browser,
+              ensuring complete privacy and security of your personal data.
+            </p>
+            <div className="grid md:grid-cols-3 gap-4 mt-6">
+              <div className="bg-white/20 rounded-lg p-4">
+                <h4 className="font-semibold mb-2">Zero Data Collection</h4>
+                <p className="text-sm opacity-90">We don't collect, store, or analyze your images</p>
+              </div>
+              <div className="bg-white/20 rounded-lg p-4">
+                <h4 className="font-semibold mb-2">Local Processing</h4>
+                <p className="text-sm opacity-90">Everything happens in your browser</p>
+              </div>
+              <div className="bg-white/20 rounded-lg p-4">
+                <h4 className="font-semibold mb-2">No Servers</h4>
+                <p className="text-sm opacity-90">Your files never touch our servers</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-        {/* Detailed Privacy Policy */}
-        <div className="max-w-4xl mx-auto space-y-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <UserCheck className="h-6 w-6 text-primary" />
-                Information We Collect
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-gray max-w-none dark:prose-invert">
-              <h3>Personal Information</h3>
-              <p>
-                We do not collect any personal information from users of our image conversion tool. The service operates
-                entirely within your browser without requiring registration, login, or any form of personal data
-                submission.
+        {/* Information We Collect */}
+        <Card className="mb-8 p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+          <CardHeader>
+            <div className="flex items-center gap-3 mb-4">
+              <FileText className="h-8 w-8 text-blue-600" />
+              <CardTitle className="text-2xl text-gray-800 dark:text-white">Information We Collect</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Images and Files</h3>
+              <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 rounded">
+                <p className="text-gray-700 dark:text-gray-300">
+                  <strong>We DO NOT collect your images.</strong> All image processing happens locally in your browser.
+                  Your files are never uploaded to our servers or any third-party services.
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Technical Information</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-3">
+                We may collect minimal technical information to improve our service:
               </p>
-
-              <h3>Image Data</h3>
-              <p>
-                Your images are processed locally in your browser using JavaScript. We never receive, store, or have
-                access to your image files. All conversion operations happen on your device.
-              </p>
-
-              <h3>Usage Analytics</h3>
-              <p>We may collect anonymous, aggregated usage statistics such as:</p>
-              <ul>
-                <li>Number of conversions performed (without file details)</li>
-                <li>Popular conversion formats</li>
-                <li>General geographic regions (country level only)</li>
-                <li>Browser and device types for compatibility purposes</li>
+              <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300 ml-4">
+                <li>Browser type and version (for compatibility)</li>
+                <li>Device type (for responsive design)</li>
+                <li>General usage statistics (anonymized)</li>
+                <li>Error reports (no personal data included)</li>
               </ul>
-              <p>This data is completely anonymous and cannot be linked to individual users.</p>
-            </CardContent>
-          </Card>
+            </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Lock className="h-6 w-6 text-primary" />
-                How We Protect Your Privacy
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-gray max-w-none dark:prose-invert">
-              <h3>Local Processing</h3>
-              <p>
-                Our image converter uses advanced web technologies to process images entirely within your browser. This
-                means:
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Optional Account Information</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                If you choose to create an account (optional), we collect only your email address and chosen username.
+                This is used solely for account management and preferences.
               </p>
-              <ul>
-                <li>Your images never leave your device</li>
-                <li>No uploads to external servers</li>
-                <li>No temporary storage on our systems</li>
-                <li>Complete control over your data</li>
-              </ul>
+            </div>
+          </CardContent>
+        </Card>
 
-              <h3>Secure Connections</h3>
-              <p>
-                All communications between your browser and our website are encrypted using HTTPS/SSL protocols,
-                ensuring that any data transmitted is secure.
+        {/* How We Protect Your Privacy */}
+        <Card className="mb-8 p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+          <CardHeader>
+            <div className="flex items-center gap-3 mb-4">
+              <Lock className="h-8 w-8 text-green-600" />
+              <CardTitle className="text-2xl text-gray-800 dark:text-white">How We Protect Your Privacy</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-800 dark:text-blue-300 mb-2">Client-Side Processing</h4>
+                <p className="text-sm text-blue-700 dark:text-blue-400">
+                  All image conversion happens in your browser using JavaScript and WebAssembly. No server communication
+                  required.
+                </p>
+              </div>
+              <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+                <h4 className="font-semibold text-green-800 dark:text-green-300 mb-2">Secure Memory</h4>
+                <p className="text-sm text-green-700 dark:text-green-400">
+                  Images are processed in secure browser memory and automatically cleared when you close the tab.
+                </p>
+              </div>
+              <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
+                <h4 className="font-semibold text-purple-800 dark:text-purple-300 mb-2">No Tracking</h4>
+                <p className="text-sm text-purple-700 dark:text-purple-400">
+                  We don't use cookies for tracking, analytics, or advertising. Only essential functionality cookies.
+                </p>
+              </div>
+              <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg">
+                <h4 className="font-semibold text-orange-800 dark:text-orange-300 mb-2">HTTPS Encryption</h4>
+                <p className="text-sm text-orange-700 dark:text-orange-400">
+                  All communication is encrypted with industry-standard SSL/TLS protocols.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Third-Party Services */}
+        <Card className="mb-8 p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+          <CardHeader>
+            <div className="flex items-center gap-3 mb-4">
+              <Server className="h-8 w-8 text-orange-600" />
+              <CardTitle className="text-2xl text-gray-800 dark:text-white">Third-Party Services</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              We use minimal third-party services, and none of them have access to your images:
+            </p>
+            <div className="space-y-4">
+              <div className="border-l-4 border-blue-500 pl-4">
+                <h4 className="font-semibold text-gray-800 dark:text-white">Content Delivery Network (CDN)</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Used to deliver our application files faster. No user data is shared.
+                </p>
+              </div>
+              <div className="border-l-4 border-green-500 pl-4">
+                <h4 className="font-semibold text-gray-800 dark:text-white">Error Monitoring</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Helps us identify and fix technical issues. Only error logs, no personal data.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Your Rights */}
+        <Card className="mb-8 p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+          <CardHeader>
+            <div className="flex items-center gap-3 mb-4">
+              <Users className="h-8 w-8 text-purple-600" />
+              <CardTitle className="text-2xl text-gray-800 dark:text-white">Your Rights</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Since we don't collect your personal data or images, you have complete control:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300 ml-4">
+              <li>
+                <strong>Right to Privacy:</strong> Your images never leave your device
+              </li>
+              <li>
+                <strong>Right to Delete:</strong> Simply close your browser - nothing is stored
+              </li>
+              <li>
+                <strong>Right to Access:</strong> No personal data is collected to access
+              </li>
+              <li>
+                <strong>Right to Portability:</strong> Your converted images are yours to keep
+              </li>
+              <li>
+                <strong>Right to Object:</strong> You can stop using our service anytime
+              </li>
+            </ul>
+          </CardContent>
+        </Card>
+
+        {/* Contact Information */}
+        <Card className="p-6 bg-gradient-to-r from-gray-800 to-gray-900 text-white">
+          <CardHeader>
+            <div className="flex items-center gap-3 mb-4">
+              <Eye className="h-8 w-8 text-blue-400" />
+              <CardTitle className="text-2xl">Questions About Privacy?</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-300 mb-4">
+              We're committed to transparency. If you have any questions about our privacy practices, please don't
+              hesitate to contact us.
+            </p>
+            <div className="bg-white/10 rounded-lg p-4">
+              <p className="text-sm">
+                <strong>Email:</strong> privacy@advancedimageconverter.com
+                <br />
+                <strong>Response Time:</strong> Within 24 hours
+                <br />
+                <strong>Available:</strong> 24/7 for privacy concerns
               </p>
-
-              <h3>No Third-Party Access</h3>
-              <p>
-                Since we don't collect or store your images, there's no risk of third-party access to your files through
-                our service.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Cookie className="h-6 w-6 text-primary" />
-                Cookies and Local Storage
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-gray max-w-none dark:prose-invert">
-              <h3>Essential Cookies</h3>
-              <p>We use minimal cookies and local storage for:</p>
-              <ul>
-                <li>Remembering your preferred settings (theme, quality preferences)</li>
-                <li>Maintaining tool functionality across sessions</li>
-                <li>Ensuring optimal performance</li>
-              </ul>
-
-              <h3>Analytics Cookies</h3>
-              <p>
-                We may use anonymous analytics cookies to understand how our tool is used and improve the user
-                experience. These cookies do not collect personal information.
-              </p>
-
-              <h3>Managing Cookies</h3>
-              <p>
-                You can control cookie settings through your browser preferences. Disabling cookies may affect some
-                functionality but will not prevent image conversion.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Shield className="h-6 w-6 text-primary" />
-                Your Rights and Choices
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-gray max-w-none dark:prose-invert">
-              <h3>Data Control</h3>
-              <p>
-                Since we don't collect personal data or store your images, you maintain complete control over your
-                information at all times.
-              </p>
-
-              <h3>Browser Controls</h3>
-              <p>You can:</p>
-              <ul>
-                <li>Clear your browser's local storage and cookies at any time</li>
-                <li>Use private/incognito browsing mode</li>
-                <li>Disable JavaScript (though this will prevent the tool from working)</li>
-                <li>Use browser extensions to block analytics</li>
-              </ul>
-
-              <h3>Contact Us</h3>
-              <p>
-                If you have questions about this privacy policy or our practices, please contact us at
-                privacy@imageconverter.com.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Changes to This Policy</CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-gray max-w-none dark:prose-invert">
-              <p>
-                We may update this privacy policy from time to time to reflect changes in our practices or for legal
-                reasons. We will notify users of any significant changes by updating the "Last updated" date at the top
-                of this policy.
-              </p>
-
-              <p>
-                We encourage you to review this policy periodically to stay informed about how we protect your privacy.
-              </p>
-
-              <h3>Compliance</h3>
-              <p>This privacy policy is designed to comply with:</p>
-              <ul>
-                <li>General Data Protection Regulation (GDPR)</li>
-                <li>California Consumer Privacy Act (CCPA)</li>
-                <li>Other applicable privacy laws and regulations</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   )

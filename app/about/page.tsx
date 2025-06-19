@@ -1,152 +1,164 @@
 import type { Metadata } from "next"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Users, Zap, Shield, Globe, Heart } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Shield, Zap, Users, Award, Target, Heart } from "lucide-react"
+import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "About Us - Advanced Image Converter | Fast, Secure, Free",
+  title: "About Us - Advanced Image Converter | Fast & Secure Image Processing",
   description:
-    "Learn about our mission to provide the best free image conversion tool. Convert JPG, PNG, WebP, AVIF, GIF, BMP, TIFF formats with complete privacy and security.",
-  keywords:
-    "about image converter, free image conversion, online image tool, privacy-focused converter, secure image processing",
+    "Learn about our mission to provide the fastest, most secure image conversion tool. Convert images between formats with privacy-first approach and cutting-edge technology.",
+  keywords: "about image converter, image processing company, secure image conversion, privacy-first image tool",
   openGraph: {
-    title: "About Advanced Image Converter - Your Privacy-First Image Tool",
-    description:
-      "Discover why millions trust our free image converter for JPG, PNG, WebP, and more formats. 100% browser-based processing ensures your privacy.",
+    title: "About Advanced Image Converter",
+    description: "Fast, secure, and privacy-first image conversion tool",
     type: "website",
-    url: "https://image-converter.unaux.com/about/",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About Advanced Image Converter - Privacy-First Image Tool",
-    description: "Learn about our mission to provide secure, fast, and free image conversion for everyone.",
-  },
-  alternates: {
-    canonical: "https://image-converter.unaux.com/about/",
   },
 }
 
 export default function AboutPage() {
-  const features = [
-    {
-      icon: <Shield className="h-8 w-8 text-primary" />,
-      title: "Privacy First",
-      description:
-        "All processing happens in your browser. Your images never leave your device, ensuring complete privacy and security.",
-    },
-    {
-      icon: <Zap className="h-8 w-8 text-primary" />,
-      title: "Lightning Fast",
-      description:
-        "Our optimized conversion engine processes images in seconds, supporting batch operations for maximum efficiency.",
-    },
-    {
-      icon: <Globe className="h-8 w-8 text-primary" />,
-      title: "Universal Access",
-      description:
-        "Works on any device, any browser, anywhere in the world. No downloads, no installations, no restrictions.",
-    },
-    {
-      icon: <Heart className="h-8 w-8 text-primary" />,
-      title: "Always Free",
-      description:
-        "We believe powerful tools should be accessible to everyone. Our service is completely free with no hidden costs.",
-    },
-  ]
-
-  const stats = [
-    { number: "10M+", label: "Images Converted" },
-    { number: "500K+", label: "Happy Users" },
-    { number: "15+", label: "Supported Formats" },
-    { number: "99.9%", label: "Uptime" },
-  ]
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">About Our Mission</h1>
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+            About Advanced Image Converter
+          </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            We're dedicated to providing the world's most secure, fast, and user-friendly image conversion tool. Built
-            with privacy in mind, our platform processes everything locally in your browser.
+            We're dedicated to providing the fastest, most secure, and user-friendly image conversion experience. Your
+            privacy and data security are our top priorities.
           </p>
         </div>
 
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.number}</div>
-              <div className="text-gray-600 dark:text-gray-400">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Features Grid */}
+        {/* Mission & Vision */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {features.map((feature, index) => (
-            <Card key={index} className="h-full hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="mb-4">{feature.icon}</div>
-                <CardTitle className="text-xl">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed">{feature.description}</CardDescription>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Our Story Section */}
-        <div className="max-w-4xl mx-auto">
-          <Card className="mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center mb-4">Our Story</CardTitle>
+          <Card className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+            <CardHeader className="text-center pb-6">
+              <Target className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+              <CardTitle className="text-2xl font-bold text-gray-800 dark:text-white">Our Mission</CardTitle>
             </CardHeader>
-            <CardContent className="prose prose-lg max-w-none dark:prose-invert">
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                Founded in 2024, Advanced Image Converter was born from a simple frustration: existing image conversion
-                tools were either too complex, required downloads, or compromised user privacy by uploading files to
-                servers.
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                We believed there had to be a better way. Using modern web technologies, we created a tool that
-                processes images entirely in your browser, ensuring your files never leave your device while delivering
-                professional-grade results.
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                Today, we're proud to serve millions of users worldwide, from photographers and designers to everyday
-                users who simply need to convert an image format. Our commitment remains the same: providing powerful,
-                secure, and accessible tools for everyone.
+            <CardContent>
+              <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed">
+                To democratize image processing by providing powerful, accessible tools that respect user privacy while
+                delivering professional-grade results instantly in your browser.
               </p>
             </CardContent>
           </Card>
 
-          {/* Values Section */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl text-center mb-4">Our Values</CardTitle>
+          <Card className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+            <CardHeader className="text-center pb-6">
+              <Heart className="h-12 w-12 text-purple-600 mx-auto mb-4" />
+              <CardTitle className="text-2xl font-bold text-gray-800 dark:text-white">Our Vision</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold mb-2">Privacy</h3>
-                  <p className="text-gray-600 dark:text-gray-300">Your data stays with you, always.</p>
-                </div>
-                <div className="text-center">
-                  <Users className="h-12 w-12 text-blue-500 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold mb-2">Accessibility</h3>
-                  <p className="text-gray-600 dark:text-gray-300">Powerful tools for everyone, everywhere.</p>
-                </div>
-                <div className="text-center">
-                  <Zap className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold mb-2">Innovation</h3>
-                  <p className="text-gray-600 dark:text-gray-300">Constantly improving and evolving.</p>
-                </div>
+              <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed">
+                A world where anyone can process images professionally without compromising privacy, regardless of
+                technical expertise or device capabilities.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Core Values */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Our Core Values</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="text-center p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <Shield className="h-16 w-16 text-green-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Privacy First</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                All processing happens locally in your browser. Your images never leave your device, ensuring complete
+                privacy.
+              </p>
+            </Card>
+
+            <Card className="text-center p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <Zap className="h-16 w-16 text-yellow-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Lightning Fast</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Optimized algorithms and modern web technologies deliver results in seconds, not minutes.
+              </p>
+            </Card>
+
+            <Card className="text-center p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <Users className="h-16 w-16 text-blue-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">User-Centric</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Every feature is designed with real user needs in mind, from professionals to casual users.
+              </p>
+            </Card>
+          </div>
+        </div>
+
+        {/* Technology & Innovation */}
+        <div className="mb-16">
+          <Card className="p-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <CardHeader className="text-center pb-6">
+              <Award className="h-16 w-16 text-white mx-auto mb-4" />
+              <CardTitle className="text-3xl font-bold">Technology & Innovation</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-lg mb-6 opacity-90">
+                Built with cutting-edge web technologies including WebAssembly, Canvas API, and modern JavaScript
+                frameworks to deliver desktop-quality performance in your browser.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Badge variant="secondary" className="bg-white/20 text-white">
+                  WebAssembly
+                </Badge>
+                <Badge variant="secondary" className="bg-white/20 text-white">
+                  Canvas API
+                </Badge>
+                <Badge variant="secondary" className="bg-white/20 text-white">
+                  Next.js
+                </Badge>
+                <Badge variant="secondary" className="bg-white/20 text-white">
+                  TypeScript
+                </Badge>
+                <Badge variant="secondary" className="bg-white/20 text-white">
+                  Tailwind CSS
+                </Badge>
               </div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Commitment */}
+        <div className="text-center mb-16">
+          <Card className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-xl max-w-4xl mx-auto">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Our Commitment</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6">
+                We're committed to continuous improvement, regular updates, and maintaining the highest standards of
+                security and performance. Your feedback drives our development, and we're always listening.
+              </p>
+              <div className="flex justify-center">
+                <Link
+                  href="/#contact-form"
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                >
+                  Get In Touch
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center">
+          <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Ready to Convert Your Images?</h2>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
+            Experience the power of professional image conversion with complete privacy protection.
+          </p>
+          <Link
+            href="/#converter"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all font-medium text-lg shadow-lg hover:shadow-xl"
+          >
+            Start Converting Now
+          </Link>
         </div>
       </div>
     </div>

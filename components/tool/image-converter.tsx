@@ -1,9 +1,10 @@
-"use client";
+"use client"
 // line num 707  or 792 bar color
-import { useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUp, AlertCircle, Pencil } from "lucide-react";
-import { useDomain } from "@/context/DomainContext";
+import { useState, useRef, useCallback } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ArrowUp, AlertCircle, Pencil } from "lucide-react"
+import { useDomain } from "@/context/DomainContext"
+import { ImageSecurityValidator, CSPHelper, InputSanitizer } from "@/lib/security"
 
 import {
   convertImage,
@@ -13,10 +14,10 @@ import {
   sanitizeFileName,
   isPotentiallyProblematicImage,
   createSanitizedFile,
-} from "@/components/tool/image-converter-utils";
-import Image from "next/image";
-import ResizeModal from "@/components/tool/resize-modal";
-import { useToast } from "@/components/ui/toast-notification";
+} from "@/components/tool/image-converter-utils"
+import Image from "next/image"
+import ResizeModal from "@/components/tool/resize-modal"
+import { useToast } from "@/components/ui/toast-notification"
 import {
   PrimaryButton,
   UploadButton,
@@ -28,8 +29,8 @@ import {
   ConvertSingleButton,
   RemoveButton,
   ZipOptionsButton,
-} from "@/components/ui/converter-buttons";
-import { useDropzone } from "react-dropzone";
+} from "@/components/ui/converter-buttons"
+import { useDropzone } from "react-dropzone"
 
 export default function ImageConverter() {
   const { domain, setDomain } = useDomain();
@@ -132,41 +133,50 @@ export default function ImageConverter() {
   });
 
   const handleFilesAdded = (newFiles: File[]) => {
-    // Filter for image files and validate them
-    const imageFiles = newFiles.filter((file) => {
-      const isImage = isValidImage(file);
-      if (!isImage) {
-        console.warn(`File rejected: ${file.name} (${file.type})`);
-      }
-      return isImage;
-    });
+    // Security validation for each file
+    const validFiles: File[] = []
+    const errors: string[] = []
 
-    if (imageFiles.length === 0) {
-      toast.error(
-        "No valid image files were found. Please upload supported image formats."
-      );
-      return;
+    for (const file of newFiles) {
+      // Validate file security
+      const validation = ImageSecurityValidator.validateFile(file)
+      if (!validation.isValid) {
+        errors.push(`${file.name}: ${validation.error}`)
+        continue
+      }
+
+      // Check rate limiting
+      const rateCheck = ImageSecurityValidator.checkRateLimit()
+      if (!rateCheck.allowed) {
+        toast.error(rateCheck.error || "Rate limit exceeded")
+        return
+      }
+
+      validFiles.push(file)
     }
 
-    // Process files to sanitize names if needed
-    const processedFiles = imageFiles.map((file) => {
-      // Check if the file might be problematic
-      if (isPotentiallyProblematicImage(file.name)) {
-        console.warn(`Potentially problematic file detected: ${file.name}`);
-        // Create a sanitized version of the file
-        return createSanitizedFile(file);
-      }
-      return file;
-    });
+    if (errors.length > 0) {
+      toast.error(`Some files were rejected: ${errors.join(', ')}`)
+    }
 
-    setFiles((prev) => [...prev, ...processedFiles]);
-    toast.success(
-      `${processedFiles.length} image${
-        processedFiles.length > 1 ? "s" : ""
-      } added successfully`
-    );
-    setErrorMessage(null);
-  };
+    if (validFiles.length === 0) {
+      toast.error("No valid image files were found.")
+      return
+    }
+
+    // Process valid files with sanitized names
+    const processedFiles = validFiles.map((file) => {
+      const sanitizedName = ImageSecurityValidator.sanitizeFilename(file.name)
+      if (sanitizedName !== file.name) {
+        return new File([file], sanitizedName, { type: file.type })
+      }
+      return file
+    })
+
+    setFiles((prev) => [...prev, ...processedFiles])
+    toast.success(`${processedFiles.length} image${processedFiles.length > 1 ? "s" : ""} added successfully`)
+    setErrorMessage(null)
+  }
 
   const handleRemoveFile = (index: number) => {
     const fileName = files[index].name;
@@ -197,6 +207,23 @@ export default function ImageConverter() {
 
   // Update the handleConvert function to properly apply quality and compression
   const handleConvert = async (fileIndex?: number) => {
+    // Check memory usage before processing
+    const memoryCheck = ImageSecurityValidator.checkMemoryUsage()
+    if (!memoryCheck.safe) {
+      toast.warning(memoryCheck.warning || "High memory usage detected")
+    }
+
+    // Validate conversion parameters
+    const paramValidation = InputSanitizer.validateConversionParams({
+      format: selectedFormat,
+      quality: quality,
+      compressionLevel: compressionEnabled ? compressionLevel : undefined
+    })
+
+    if (!paramValidation.isValid) {
+      toast.error(paramValidation.error || "Invalid conversion parameters")
+      return
+    }
     const filesToConvert = fileIndex !== undefined ? [files[fileIndex]] : files;
 
     if (filesToConvert.length === 0) return;
@@ -304,7 +331,8 @@ export default function ImageConverter() {
           const sanitizedBaseName = sanitizeFileName(baseName);
           const fileName = `${sanitizedBaseName}.${selectedFormat}`;
 
-          const url = URL.createObjectURL(convertedBlob);
+          // Replace URL.createObjectURL(convertedBlob) with:
+          const url = CSPHelper.createSecureBlobURL(convertedBlob, 'image/')
 
           newConvertedFiles.push({
             name: fileName,
@@ -428,8 +456,8 @@ export default function ImageConverter() {
       const zipUrl = URL.createObjectURL(zipBlob);
       const downloadLink = document.createElement("a");
 
-      let baseZipName = zipName && zipName.trim() ? zipName.trim() : "";
-      let baseDomain = domain && domain.trim() ? domain.trim() : "";
+      const baseZipName = zipName && zipName.trim() ? zipName.trim() : "";
+      const baseDomain = domain && domain.trim() ? domain.trim() : "";
       let finalZipName = "";
 
       if (baseZipName) {
@@ -478,7 +506,8 @@ export default function ImageConverter() {
 
   const handleDeleteConverted = (index: number) => {
     const fileName = convertedFiles[index].name;
-    URL.revokeObjectURL(convertedFiles[index].url);
+    // Replace URL.revokeObjectURL calls with:
+    CSPHelper.safeRevokeURL(convertedFiles[index].url)
     setConvertedFiles((prev) => prev.filter((_, i) => i !== index));
     toast.info(`Removed ${fileName}`);
   };
@@ -506,7 +535,8 @@ export default function ImageConverter() {
       const updatedFiles = [...convertedFiles];
 
       // Revoke the old URL to avoid memory leaks
-      URL.revokeObjectURL(updatedFiles[selectedFileIndex].url);
+      // Replace URL.revokeObjectURL calls with:
+      CSPHelper.safeRevokeURL(updatedFiles[selectedFileIndex].url)
 
       // Create a new URL for the resized image
       const newUrl = URL.createObjectURL(resizedBlob);
@@ -1154,170 +1184,4 @@ export default function ImageConverter() {
                   initial={{ scale: 0.9 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0.9 }}
-                  className="bg-white dark:bg-gray-900 rounded-custom shadow-lg max-w-md w-full p-6"
-                >
-                  <h3 className="text-lg font-medium mb-4">Rename File</h3>
-                  <div className="space-y-4">
-                    <div>
-                      <label
-                        htmlFor="new-filename"
-                        className="text-sm font-medium block mb-1"
-                      >
-                        New Filename
-                      </label>
-                      <input
-                        id="new-filename"
-                        type="text"
-                        value={newFileName}
-                        onChange={(e) => setNewFileName(e.target.value)}
-                        className="w-full rounded-custom border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm"
-                        autoFocus
-                      />
-                      <p className="text-xs text-muted-foreground mt-1">
-                        Extension will be added automatically
-                      </p>
-                    </div>
-                    <div className="flex justify-end gap-2">
-                      <button
-                        onClick={() => setRenameModalOpen(false)}
-                        className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        onClick={handleRenameFile}
-                        className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2"
-                      >
-                        Rename
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function FormatIcon({ format }: { format: string }) {
-  const getIconColor = () => {
-    switch (format) {
-      case "jpg":
-        return "text-blue-500";
-      case "png":
-        return "text-green-500";
-      case "webp":
-        return "text-blue-400";
-      case "gif":
-        return "text-purple-500";
-      case "svg":
-        return "text-amber-500";
-      case "tiff":
-        return "text-red-500";
-      default:
-        return "text-gray-500";
-    }
-  };
-
-  return (
-    <div
-      className={`w-8 h-8 mb-2 flex items-center justify-center ${getIconColor()}`}
-    >
-      {format === "jpg" && (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-          <circle cx="8.5" cy="8.5" r="1.5" />
-          <polyline points="21 15 16 10 5 21" />
-        </svg>
-      )}
-      {format === "png" && (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M21 8v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5Z" />
-          <path d="M3 8h18" />
-          <path d="M9 21v-6.5a3.5 3.5 0 0 1 7 0V21" />
-        </svg>
-      )}
-      {format === "webp" && (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
-          <polyline points="14 2 14 8 20 8" />
-          <path d="M2 15h10" />
-          <path d="M9 18l3-3-3-3" />
-        </svg>
-      )}
-      {format === "gif" && (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-          <line x1="8" y1="21" x2="16" y2="21" />
-          <line x1="12" y1="17" x2="12" y2="21" />
-        </svg>
-      )}
-      {format === "svg" && (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M12 3v12l-4-4" />
-          <path d="M8 21h12a2 2 0 0 0 2-2v-8.5L14.5 3H8a2 2 0 0 0-2 2v4" />
-          <path d="M14 3v7h7" />
-        </svg>
-      )}
-      {format === "tiff" && (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
-          <polyline points="14 2 14 8 20 8" />
-          <path d="M3 15h6" />
-          <path d="M6 12v6" />
-        </svg>
-      )}
-    </div>
-  );
-}
+\
