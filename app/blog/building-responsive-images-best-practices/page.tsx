@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowLeft, Monitor, Smartphone, Tablet, Zap } from "lucide-react"
+import { ArrowLeft, Download, Monitor, Smartphone, Tablet, Zap } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
 export const metadata: Metadata = {
@@ -43,15 +44,15 @@ export default function ResponsiveImagesGuide() {
               Building Responsive Images: Best Practices for Modern Web
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Master the art of responsive images. Learn how to deliver the perfect image for every 
-              device, screen size, and network condition while maintaining optimal performance.
+              Master the art of responsive images. Learn how to deliver the perfect image for every device, screen size,
+              and network condition while maintaining optimal performance.
             </p>
           </header>
 
           {/* Featured Image */}
           <div className="mb-8">
-            <img 
-              src="/placeholder.svg?height=400&width=800" 
+            <img
+              src="/placeholder.svg?height=400&width=800"
               alt="Responsive images across different devices"
               className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
             />
@@ -61,10 +62,9 @@ export default function ResponsiveImagesGuide() {
           <div className="prose prose-lg max-w-none">
             <h2>The Responsive Images Challenge</h2>
             <p>
-              In today's multi-device world, images must adapt to countless screen sizes, pixel densities, 
-              and network conditions. A single image approach leads to poor performance on mobile devices 
-              or pixelated displays on high-resolution screens. Responsive images solve this by delivering 
-              the right image for each context.
+              In today's multi-device world, images must adapt to countless screen sizes, pixel densities, and network
+              conditions. A single image approach leads to poor performance on mobile devices or pixelated displays on
+              high-resolution screens. Responsive images solve this by delivering the right image for each context.
             </p>
 
             <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 my-8">
@@ -73,23 +73,32 @@ export default function ResponsiveImagesGuide() {
                 <div>
                   <h3 className="text-lg font-semibold text-indigo-900 mb-2">Performance Impact</h3>
                   <p className="text-indigo-800">
-                    Responsive images can reduce data usage by 40-70% on mobile devices while 
-                    ensuring crisp display on high-resolution screens, dramatically improving 
-                    both performance and user experience.
+                    Responsive images can reduce data usage by 40-70% on mobile devices while ensuring crisp display on
+                    high-resolution screens, dramatically improving both performance and user experience.
                   </p>
                 </div>
               </div>
             </div>
 
             <h2>Understanding Responsive Image Fundamentals</h2>
-            
+
             <h3>The Problems We're Solving</h3>
             <ul>
-              <li><strong>Resolution Switching:</strong> Different image sizes for different screen sizes</li>
-              <li><strong>Density Switching:</strong> Higher resolution images for high-DPI displays</li>
-              <li><strong>Art Direction:</strong> Different crops or compositions for different contexts</li>
-              <li><strong>Format Selection:</strong> Modern formats with fallbacks for older browsers</li>
-              <li><strong>Performance Optimization:</strong> Faster loading and reduced bandwidth usage</li>
+              <li>
+                <strong>Resolution Switching:</strong> Different image sizes for different screen sizes
+              </li>
+              <li>
+                <strong>Density Switching:</strong> Higher resolution images for high-DPI displays
+              </li>
+              <li>
+                <strong>Art Direction:</strong> Different crops or compositions for different contexts
+              </li>
+              <li>
+                <strong>Format Selection:</strong> Modern formats with fallbacks for older browsers
+              </li>
+              <li>
+                <strong>Performance Optimization:</strong> Faster loading and reduced bandwidth usage
+              </li>
             </ul>
 
             <h3>Key Concepts</h3>
@@ -98,7 +107,9 @@ export default function ResponsiveImagesGuide() {
                 <CardContent className="p-6">
                   <Smartphone className="w-8 h-8 text-blue-600 mb-4" />
                   <h4 className="font-semibold mb-2">Viewport Width</h4>
-                  <p className="text-sm">The visible area of a web page on the user's device, measured in CSS pixels.</p>
+                  <p className="text-sm">
+                    The visible area of a web page on the user's device, measured in CSS pixels.
+                  </p>
                 </CardContent>
               </Card>
               <Card>
@@ -118,15 +129,13 @@ export default function ResponsiveImagesGuide() {
             </div>
 
             <h2>The srcset Attribute</h2>
-            
+
             <h3>Basic srcset Syntax</h3>
-            <p>
-              The srcset attribute allows you to specify multiple image sources for different conditions:
-            </p>
+            <p>The srcset attribute allows you to specify multiple image sources for different conditions:</p>
             <div className="bg-gray-100 p-4 rounded-lg my-6">
               <h5 className="font-semibold mb-2">Width-based srcset:</h5>
               <pre className="text-sm overflow-x-auto">
-{`<img src="image-400.jpg"
+                {`<img src="image-400.jpg"
      srcset="image-400.jpg 400w,
              image-800.jpg 800w,
              image-1200.jpg 1200w,
@@ -139,13 +148,11 @@ export default function ResponsiveImagesGuide() {
             </div>
 
             <h3>Density-based srcset</h3>
-            <p>
-              For high-DPI displays, use density descriptors:
-            </p>
+            <p>For high-DPI displays, use density descriptors:</p>
             <div className="bg-gray-100 p-4 rounded-lg my-6">
               <h5 className="font-semibold mb-2">Density-based srcset:</h5>
               <pre className="text-sm overflow-x-auto">
-{`<img src="image.jpg"
+                {`<img src="image.jpg"
      srcset="image.jpg 1x,
              image-2x.jpg 2x,
              image-3x.jpg 3x"
@@ -154,14 +161,20 @@ export default function ResponsiveImagesGuide() {
             </div>
 
             <h3>The sizes Attribute</h3>
-            <p>
-              The sizes attribute tells the browser how much space the image will occupy:
-            </p>
+            <p>The sizes attribute tells the browser how much space the image will occupy:</p>
             <ul>
-              <li><strong>Media Conditions:</strong> CSS media query conditions</li>
-              <li><strong>Length Values:</strong> How much space the image takes up</li>
-              <li><strong>Viewport Units:</strong> vw, vh, vmin, vmax</li>
-              <li><strong>Default Size:</strong> The last value without a media condition</li>
+              <li>
+                <strong>Media Conditions:</strong> CSS media query conditions
+              </li>
+              <li>
+                <strong>Length Values:</strong> How much space the image takes up
+              </li>
+              <li>
+                <strong>Viewport Units:</strong> vw, vh, vmin, vmax
+              </li>
+              <li>
+                <strong>Default Size:</strong> The last value without a media condition
+              </li>
             </ul>
 
             <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-8">
@@ -170,23 +183,21 @@ export default function ResponsiveImagesGuide() {
                 <div>
                   <h3 className="text-lg font-semibold text-blue-900 mb-2">Pro Tip</h3>
                   <p className="text-blue-800">
-                    The browser uses srcset and sizes to choose the best image before downloading. 
-                    Make sure your sizes attribute accurately reflects your CSS layout.
+                    The browser uses srcset and sizes to choose the best image before downloading. Make sure your sizes
+                    attribute accurately reflects your CSS layout.
                   </p>
                 </div>
               </div>
             </div>
 
             <h2>The Picture Element</h2>
-            
+
             <h3>Art Direction with Picture</h3>
-            <p>
-              The picture element provides full control over which image is displayed:
-            </p>
+            <p>The picture element provides full control over which image is displayed:</p>
             <div className="bg-gray-100 p-4 rounded-lg my-6">
               <h5 className="font-semibold mb-2">Art Direction Example:</h5>
               <pre className="text-sm overflow-x-auto">
-{`<picture>
+                {`<picture>
   <source media="(max-width: 600px)"
           srcset="image-mobile-400.jpg 400w,
                   image-mobile-800.jpg 800w"
@@ -205,13 +216,11 @@ export default function ResponsiveImagesGuide() {
             </div>
 
             <h3>Format Selection with Picture</h3>
-            <p>
-              Use picture to provide modern formats with fallbacks:
-            </p>
+            <p>Use picture to provide modern formats with fallbacks:</p>
             <div className="bg-gray-100 p-4 rounded-lg my-6">
               <h5 className="font-semibold mb-2">Format Selection Example:</h5>
               <pre className="text-sm overflow-x-auto">
-{`<picture>
+                {`<picture>
   <source type="image/avif"
           srcset="image.avif 1x, image-2x.avif 2x">
   <source type="image/webp"
@@ -224,11 +233,9 @@ export default function ResponsiveImagesGuide() {
             </div>
 
             <h2>Creating Responsive Image Sets</h2>
-            
+
             <h3>Planning Your Image Sizes</h3>
-            <p>
-              Determine the right image sizes based on your design and common device sizes:
-            </p>
+            <p>Determine the right image sizes based on your design and common device sizes:</p>
 
             <h4>Common Breakpoints</h4>
             <div className="overflow-x-auto my-8">
@@ -271,28 +278,36 @@ export default function ResponsiveImagesGuide() {
             </div>
 
             <h3>Image Generation Workflow</h3>
-            <p>
-              Create a systematic approach to generating responsive image sets:
-            </p>
+            <p>Create a systematic approach to generating responsive image sets:</p>
             <ol>
-              <li><strong>Start with High Resolution:</strong> Begin with the largest size you'll need</li>
-              <li><strong>Calculate Sizes:</strong> Determine all required sizes based on breakpoints</li>
-              <li><strong>Batch Resize:</strong> Use tools to generate all sizes automatically</li>
-              <li><strong>Optimize Each Size:</strong> Apply appropriate compression for each size</li>
-              <li><strong>Generate Multiple Formats:</strong> Create WebP, AVIF versions</li>
-              <li><strong>Test and Validate:</strong> Verify images work across devices</li>
+              <li>
+                <strong>Start with High Resolution:</strong> Begin with the largest size you'll need
+              </li>
+              <li>
+                <strong>Calculate Sizes:</strong> Determine all required sizes based on breakpoints
+              </li>
+              <li>
+                <strong>Batch Resize:</strong> Use tools to generate all sizes automatically
+              </li>
+              <li>
+                <strong>Optimize Each Size:</strong> Apply appropriate compression for each size
+              </li>
+              <li>
+                <strong>Generate Multiple Formats:</strong> Create WebP, AVIF versions
+              </li>
+              <li>
+                <strong>Test and Validate:</strong> Verify images work across devices
+              </li>
             </ol>
 
             <h2>Advanced Responsive Image Techniques</h2>
-            
+
             <h3>Lazy Loading</h3>
-            <p>
-              Improve performance by loading images only when needed:
-            </p>
+            <p>Improve performance by loading images only when needed:</p>
             <div className="bg-gray-100 p-4 rounded-lg my-6">
               <h5 className="font-semibold mb-2">Native Lazy Loading:</h5>
               <pre className="text-sm overflow-x-auto">
-{`<img src="image-400.jpg"
+                {`<img src="image-400.jpg"
      srcset="image-400.jpg 400w,
              image-800.jpg 800w,
              image-1200.jpg 1200w"
@@ -303,13 +318,11 @@ export default function ResponsiveImagesGuide() {
             </div>
 
             <h3>Intersection Observer API</h3>
-            <p>
-              For more control over lazy loading behavior:
-            </p>
+            <p>For more control over lazy loading behavior:</p>
             <div className="bg-gray-100 p-4 rounded-lg my-6">
               <h5 className="font-semibold mb-2">JavaScript Lazy Loading:</h5>
               <pre className="text-sm overflow-x-auto">
-{`const imageObserver = new IntersectionObserver((entries, observer) => {
+                {`const imageObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const img = entry.target;
@@ -328,14 +341,20 @@ document.querySelectorAll('img[data-src]').forEach(img => {
             </div>
 
             <h3>Progressive Enhancement</h3>
-            <p>
-              Build responsive images that work even when JavaScript fails:
-            </p>
+            <p>Build responsive images that work even when JavaScript fails:</p>
             <ul>
-              <li><strong>Fallback Images:</strong> Always provide a src attribute</li>
-              <li><strong>No-JS Support:</strong> Ensure basic functionality without JavaScript</li>
-              <li><strong>Graceful Degradation:</strong> Enhanced features for capable browsers</li>
-              <li><strong>Performance Budget:</strong> Set limits for image sizes and formats</li>
+              <li>
+                <strong>Fallback Images:</strong> Always provide a src attribute
+              </li>
+              <li>
+                <strong>No-JS Support:</strong> Ensure basic functionality without JavaScript
+              </li>
+              <li>
+                <strong>Graceful Degradation:</strong> Enhanced features for capable browsers
+              </li>
+              <li>
+                <strong>Performance Budget:</strong> Set limits for image sizes and formats
+              </li>
             </ul>
 
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
@@ -344,25 +363,23 @@ document.querySelectorAll('img[data-src]').forEach(img => {
                 <div>
                   <h3 className="text-lg font-semibold text-green-900 mb-2">Mobile-First Approach</h3>
                   <p className="text-green-800">
-                    Design your responsive image strategy mobile-first. Start with the smallest, 
-                    most optimized images and enhance for larger screens and better connections.
+                    Design your responsive image strategy mobile-first. Start with the smallest, most optimized images
+                    and enhance for larger screens and better connections.
                   </p>
                 </div>
               </div>
             </div>
 
             <h2>Tools and Automation</h2>
-            
+
             <h3>Build Tools Integration</h3>
-            
+
             <h4>Webpack and Image Processing</h4>
-            <p>
-              Automate responsive image generation in your build process:
-            </p>
+            <p>Automate responsive image generation in your build process:</p>
             <div className="bg-gray-100 p-4 rounded-lg my-6">
               <h5 className="font-semibold mb-2">Webpack Configuration:</h5>
               <pre className="text-sm overflow-x-auto">
-{`const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+                {`const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = {
   module: {
@@ -401,13 +418,11 @@ module.exports = {
             </div>
 
             <h4>Next.js Image Optimization</h4>
-            <p>
-              Next.js provides built-in responsive image optimization:
-            </p>
+            <p>Next.js provides built-in responsive image optimization:</p>
             <div className="bg-gray-100 p-4 rounded-lg my-6">
               <h5 className="font-semibold mb-2">Next.js Image Component:</h5>
               <pre className="text-sm overflow-x-auto">
-{`import Image from 'next/image';
+                {`import Image from 'next/image';
 
 function ResponsiveImage() {
   return (
@@ -425,50 +440,66 @@ function ResponsiveImage() {
             </div>
 
             <h3>Content Management Systems</h3>
-            
+
             <h4>WordPress Responsive Images</h4>
-            <p>
-              WordPress automatically generates responsive images:
-            </p>
+            <p>WordPress automatically generates responsive images:</p>
             <ul>
-              <li><strong>Automatic srcset:</strong> Generated for uploaded images</li>
-              <li><strong>Custom Image Sizes:</strong> Define additional breakpoints</li>
-              <li><strong>WebP Support:</strong> Plugins for modern format delivery</li>
-              <li><strong>Lazy Loading:</strong> Built-in lazy loading support</li>
+              <li>
+                <strong>Automatic srcset:</strong> Generated for uploaded images
+              </li>
+              <li>
+                <strong>Custom Image Sizes:</strong> Define additional breakpoints
+              </li>
+              <li>
+                <strong>WebP Support:</strong> Plugins for modern format delivery
+              </li>
+              <li>
+                <strong>Lazy Loading:</strong> Built-in lazy loading support
+              </li>
             </ul>
 
             <h4>Headless CMS Solutions</h4>
-            <p>
-              Modern headless CMS platforms offer responsive image APIs:
-            </p>
+            <p>Modern headless CMS platforms offer responsive image APIs:</p>
             <ul>
-              <li><strong>Contentful:</strong> Dynamic image resizing and optimization</li>
-              <li><strong>Strapi:</strong> Image transformation plugins</li>
-              <li><strong>Sanity:</strong> Real-time image processing</li>
-              <li><strong>Cloudinary:</strong> Comprehensive image management</li>
+              <li>
+                <strong>Contentful:</strong> Dynamic image resizing and optimization
+              </li>
+              <li>
+                <strong>Strapi:</strong> Image transformation plugins
+              </li>
+              <li>
+                <strong>Sanity:</strong> Real-time image processing
+              </li>
+              <li>
+                <strong>Cloudinary:</strong> Comprehensive image management
+              </li>
             </ul>
 
             <h2>Performance Optimization Strategies</h2>
-            
+
             <h3>Critical Path Optimization</h3>
-            <p>
-              Optimize images in the critical rendering path:
-            </p>
+            <p>Optimize images in the critical rendering path:</p>
             <ul>
-              <li><strong>Above-the-fold Images:</strong> Prioritize visible images</li>
-              <li><strong>Preload Critical Images:</strong> Use link rel="preload" for hero images</li>
-              <li><strong>Inline Critical Images:</strong> Consider data URIs for small, critical images</li>
-              <li><strong>Defer Non-critical Images:</strong> Lazy load below-the-fold content</li>
+              <li>
+                <strong>Above-the-fold Images:</strong> Prioritize visible images
+              </li>
+              <li>
+                <strong>Preload Critical Images:</strong> Use link rel="preload" for hero images
+              </li>
+              <li>
+                <strong>Inline Critical Images:</strong> Consider data URIs for small, critical images
+              </li>
+              <li>
+                <strong>Defer Non-critical Images:</strong> Lazy load below-the-fold content
+              </li>
             </ul>
 
             <h3>Network-Aware Loading</h3>
-            <p>
-              Adapt image delivery based on network conditions:
-            </p>
+            <p>Adapt image delivery based on network conditions:</p>
             <div className="bg-gray-100 p-4 rounded-lg my-6">
               <h5 className="font-semibold mb-2">Network API Example:</h5>
               <pre className="text-sm overflow-x-auto">
-{`function getImageQuality() {
+                {`function getImageQuality() {
   if ('connection' in navigator) {
     const connection = navigator.connection;
     if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
@@ -491,31 +522,223 @@ function loadResponsiveImage(img) {
             </div>
 
             <h3>Caching Strategies</h3>
-            <p>
-              Implement effective caching for responsive images:
-            </p>
+            <p>Implement effective caching for responsive images:</p>
             <ul>
-              <li><strong>Browser Caching:</strong> Set appropriate cache headers</li>
-              <li><strong>CDN Caching:</strong> Use CDNs for global image delivery</li>
-              <li><strong>Service Worker Caching:</strong> Cache images for offline use</li>
-              <li><strong>Adaptive Caching:</strong> Cache based on device capabilities</li>
+              <li>
+                <strong>Browser Caching:</strong> Set appropriate cache headers
+              </li>
+              <li>
+                <strong>CDN Caching:</strong> Use CDNs for global image delivery
+              </li>
+              <li>
+                <strong>Service Worker Caching:</strong> Cache images for offline use
+              </li>
+              <li>
+                <strong>Adaptive Caching:</strong> Cache based on device capabilities
+              </li>
             </ul>
 
             <h2>Testing and Validation</h2>
-            
+
             <h3>Cross-Device Testing</h3>
-            <p>
-              Ensure responsive images work across all target devices:
-            </p>
+            <p>Ensure responsive images work across all target devices:</p>
             <ul>
-              <li><strong>Device Testing:</strong> Test on real devices when possible</li>
-              <li><strong>Browser DevTools:</strong> Use device emulation for quick testing</li>
-              <li><strong>Online Testing Tools:</strong> Services like BrowserStack</li>
-              <li><strong>Performance Testing:</strong> Measure loading times across devices</li>
+              <li>
+                <strong>Device Testing:</strong> Test on real devices when possible
+              </li>
+              <li>
+                <strong>Browser DevTools:</strong> Use device emulation for quick testing
+              </li>
+              <li>
+                <strong>Online Testing Tools:</strong> Services like BrowserStack
+              </li>
+              <li>
+                <strong>Performance Testing:</strong> Measure loading times across devices
+              </li>
             </ul>
 
             <h3>Automated Testing</h3>
+            <p>Set up automated tests for responsive image functionality:</p>
+            <div className="bg-gray-100 p-4 rounded-lg my-6">
+              <h5 className="font-semibold mb-2">Puppeteer Testing Example:</h5>
+              <pre className="text-sm overflow-x-auto">
+                {`const puppeteer = require('puppeteer');
+
+async function testResponsiveImages() {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  
+  // Test mobile viewport
+  await page.setViewport({ width: 375, height: 667 });
+  await page.goto('https://example.com');
+  
+  const mobileSrc = await page.$eval('img', img => img.currentSrc);
+  console.log('Mobile image:', mobileSrc);
+  
+  // Test desktop viewport
+  await page.setViewport({ width: 1920, height: 1080 });
+  await page.reload();
+  
+  const desktopSrc = await page.$eval('img', img => img.currentSrc);
+  console.log('Desktop image:', desktopSrc);
+  
+  await browser.close();
+}`}
+              </pre>
+            </div>
+
+            <h2>Common Pitfalls and Solutions</h2>
+
+            <h3>Sizing Mistakes</h3>
+            <ul>
+              <li>
+                <strong>Incorrect sizes attribute:</strong> Leads to wrong image selection
+              </li>
+              <li>
+                <strong>Missing fallback:</strong> Always provide a src attribute
+              </li>
+              <li>
+                <strong>Over-optimization:</strong> Don't sacrifice quality for file size
+              </li>
+              <li>
+                <strong>Under-optimization:</strong> Ensure images are properly compressed
+              </li>
+            </ul>
+
+            <h3>Performance Issues</h3>
+            <ul>
+              <li>
+                <strong>Too many variants:</strong> Balance choice with complexity
+              </li>
+              <li>
+                <strong>Large fallback images:</strong> Keep fallback images reasonably sized
+              </li>
+              <li>
+                <strong>Blocking JavaScript:</strong> Don't rely solely on JavaScript for critical images
+              </li>
+              <li>
+                <strong>Cache misses:</strong> Ensure consistent naming for better caching
+              </li>
+            </ul>
+
+            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 my-8">
+              <div className="flex items-start">
+                <Monitor className="w-6 h-6 text-yellow-600 mr-3 mt-1" />
+                <div>
+                  <h3 className="text-lg font-semibold text-yellow-900 mb-2">Testing Reminder</h3>
+                  <p className="text-yellow-800">
+                    Always test your responsive images on real devices with real network conditions. Emulators are
+                    helpful but can't replicate all real-world scenarios.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h2>Future of Responsive Images</h2>
+            <p>Responsive image technology continues to evolve with new standards and capabilities:</p>
+
+            <h3>Emerging Technologies</h3>
+            <ul>
+              <li>
+                <strong>Container Queries:</strong> Size images based on container, not viewport
+              </li>
+              <li>
+                <strong>Variable Fonts:</strong> Responsive typography to complement images
+              </li>
+              <li>
+                <strong>CSS aspect-ratio:</strong> Better control over image dimensions
+              </li>
+              <li>
+                <strong>New Image Formats:</strong> JPEG XL and other next-generation formats
+              </li>
+            </ul>
+
+            <h3>AI and Machine Learning</h3>
+            <ul>
+              <li>
+                <strong>Intelligent Cropping:</strong> AI-powered art direction
+              </li>
+              <li>
+                <strong>Content-Aware Resizing:</strong> Smart scaling that preserves important details
+              </li>
+              <li>
+                <strong>Predictive Loading:</strong> Load images based on user behavior
+              </li>
+              <li>
+                <strong>Automated Optimization:</strong> AI-driven compression and format selection
+              </li>
+            </ul>
+
+            <h2>Conclusion</h2>
             <p>
-              Set up automated tests for responsive image functionality:
+              Responsive images are essential for modern web development. By mastering srcset, the picture element, and
+              optimization techniques, you can deliver fast, beautiful images across all devices. The key is to start
+              simple, test thoroughly, and continuously optimize based on real-world performance data.
             </p>
-            <div className="bg-gray-100 p-\
+            <p>
+              As web technologies continue to evolve, responsive images will become even more sophisticated. Stay
+              updated with the latest standards and tools to ensure your images always provide the best possible user
+              experience.
+            </p>
+          </div>
+
+          {/* CTA Section */}
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg p-8 text-white text-center my-12">
+            <h2 className="text-2xl font-bold mb-4">Ready to Build Responsive Images?</h2>
+            <p className="text-lg mb-6 opacity-90">Create optimized responsive image sets for your website</p>
+            <Link href="/">
+              <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100">
+                <Download className="w-5 h-5 mr-2" />
+                Start Creating Now
+              </Button>
+            </Link>
+          </div>
+
+          {/* FAQ Section */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              <div className="border-l-4 border-blue-500 pl-6">
+                <h3 className="font-semibold mb-2">What's the difference between srcset and the picture element?</h3>
+                <p className="text-gray-600">
+                  srcset is for resolution switching (same image, different sizes), while picture is for art direction
+                  (different images for different contexts) and format selection.
+                </p>
+              </div>
+              <div className="border-l-4 border-blue-500 pl-6">
+                <h3 className="font-semibold mb-2">How many image sizes should I create?</h3>
+                <p className="text-gray-600">
+                  Typically 3-5 sizes cover most use cases: mobile (400-600px), tablet (800-1000px), desktop
+                  (1200-1600px), and optionally ultra-wide (1920px+). More sizes provide better optimization but
+                  increase complexity.
+                </p>
+              </div>
+              <div className="border-l-4 border-blue-500 pl-6">
+                <h3 className="font-semibold mb-2">Should I always use lazy loading for images?</h3>
+                <p className="text-gray-600">
+                  Use lazy loading for below-the-fold images, but not for critical above-the-fold images like hero
+                  images or logos. Critical images should load immediately for better user experience.
+                </p>
+              </div>
+              <div className="border-l-4 border-blue-500 pl-6">
+                <h3 className="font-semibold mb-2">How do I handle responsive images in email?</h3>
+                <p className="text-gray-600">
+                  Email clients have limited support for responsive images. Use media queries in CSS to show/hide
+                  different image versions, or use services that detect email client capabilities and serve appropriate
+                  images.
+                </p>
+              </div>
+              <div className="border-l-4 border-blue-500 pl-6">
+                <h3 className="font-semibold mb-2">What's the best way to test responsive images?</h3>
+                <p className="text-gray-600">
+                  Use browser DevTools to emulate different devices and network conditions, test on real devices when
+                  possible, and use automated testing tools to verify image selection across different viewport sizes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  )
+}
