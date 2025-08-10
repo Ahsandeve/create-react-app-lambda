@@ -2,11 +2,9 @@
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://image-converter.unaux.com/",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "export": "next export",
     "lint": "next lint",
     "start": "next start"
   },
@@ -61,6 +59,7 @@
     "react-resizable-panels": "latest",
     "react-toastify": "latest",
     "recharts": "latest",
+    "schema-dts": "latest",
     "sonner": "latest",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
