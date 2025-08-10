@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss"
 
-const config = {
+const config: Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -18,24 +18,7 @@ const config = {
         "2xl": "1400px",
       },
     },
-    screens: {
-      xsm: "480px", // Add your custom breakpoint here
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
-    },
     extend: {
-      maxWidth: {
-        tool: "1045px",
-      },
-      borderRadius: {
-        custom: "8px",
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -71,6 +54,12 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+        custom: "8px",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -80,35 +69,27 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        fadeIn: {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
-        slideUp: {
-          from: { transform: "translateY(20px)", opacity: "0" },
-          to: { transform: "translateY(0)", opacity: "1" },
-        },
-        pulse: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.5" },
-        },
-        slideInRight: {
-          from: { transform: "translateX(100%)", opacity: "0" },
-          to: { transform: "translateX(0)", opacity: "1" },
-        },
-        slideOutRight: {
-          from: { transform: "translateX(0)", opacity: "1" },
-          to: { transform: "translateX(100%)", opacity: "0" },
+        float: {
+          "0%": {
+            transform: "translateY(0) translateX(0) rotate(0)",
+            opacity: "0",
+          },
+          "10%": {
+            opacity: "0.5",
+          },
+          "90%": {
+            opacity: "0.5",
+          },
+          "100%": {
+            transform: "translateY(var(--travel-y)) translateX(var(--travel-x)) rotate(var(--rotate))",
+            opacity: "0",
+          },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        fadeIn: "fadeIn 0.5s ease-out forwards",
-        slideUp: "slideUp 0.5s ease-out forwards",
-        pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        slideInRight: "slideInRight 0.3s ease-out forwards",
-        slideOutRight: "slideOutRight 0.3s ease-out forwards",
+        float: "float linear infinite",
       },
     },
   },
